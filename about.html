@@ -1,0 +1,127 @@
+```html
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="lang-he">אודות - רם</title>
+    <title class="lang-en" style="display: none;">About - Ram</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; }
+        .lang-en { display: none; }
+        .lang-en-inline { display: none; }
+    </style>
+    <script>
+        function applyLanguage(lang) {
+            document.querySelectorAll('.lang-he').forEach(el => el.style.display = lang === 'he' ? 'block' : 'none');
+            document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
+            document.querySelectorAll('.lang-he-inline').forEach(el => el.style.display = lang === 'he' ? 'inline' : 'none');
+            document.querySelectorAll('.lang-en-inline').forEach(el => el.style.display = lang === 'en' ? 'inline' : 'none');
+            document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+        }
+
+        function toggleLanguage() {
+            const currentLang = localStorage.getItem('lang') || 'he';
+            const newLang = currentLang === 'he' ? 'en' : 'he';
+            localStorage.setItem('lang', newLang);
+            applyLanguage(newLang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            applyLanguage(localStorage.getItem('lang') || 'he');
+        });
+    </script>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="relative bg-gray-800 p-5 border-b border-gray-700 shadow-lg">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+            <div class="text-xl font-bold text-blue-400">
+                <span class="lang-he">היסטוריה באבן</span>
+                <span class="lang-en">History in Stone</span>
+            </div>
+            <div class="flex flex-wrap gap-4 text-sm md:text-base">
+                <a href="./index.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">ראשי</span><span class="lang-en">Home</span>
+                </a>
+                <a href="./about.html" class="text-blue-400 font-bold border-b-2 border-blue-400 pb-1">
+                    <span class="lang-he">אודות</span><span class="lang-en">About</span>
+                </a>
+                <a href="./buildings/capitol.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">הקפיטול</span><span class="lang-en">Capitol</span>
+                </a>
+                <a href="./buildings/westminster.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">וסטמינסטר</span><span class="lang-en">Westminster</span>
+                </a>
+                <a href="./buildings/reichstag.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">הרייכסטאג</span><span class="lang-en">Reichstag</span>
+                </a>
+                <a href="./buildings/brazil_congress.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">קונגרס ברזיל</span><span class="lang-en">Brazil Congress</span>
+                </a>
+            </div>
+            <button onclick="toggleLanguage()" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition-colors font-medium">
+                <span class="lang-he">English</span>
+                <span class="lang-en">עברית</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-4xl mx-auto p-6 md:p-10 w-full">
+        <div class="bg-gray-800 rounded-3xl p-8 md:p-12 shadow-2xl border border-gray-700 flex flex-col md:flex-row gap-10 items-center md:items-start">
+            
+            <!-- Image Placeholder -->
+            <div class="w-48 h-48 md:w-64 md:h-64 flex-shrink-0">
+                <img src="images/ram.jpg" alt="Ram" onerror="this.src='https://via.placeholder.com/300x300/1f2937/60a5fa?text=Ram'" class="w-full h-full object-cover rounded-full border-4 border-blue-500 shadow-xl">
+            </div>
+
+            <!-- Content -->
+            <div class="flex-1 space-y-6">
+                <h1 class="text-4xl font-extrabold text-white">
+                    <span class="lang-he">אודותיי - רם</span>
+                    <span class="lang-en">About Me - Ram</span>
+                </h1>
+                
+                <div class="space-y-4 text-lg text-gray-300 leading-relaxed">
+                    <p class="lang-he">
+                        שלום, שמי רם. אני חוקר עצמאי ומונע מתשוקה עמוקה להיסטוריה, ביוגרפיות, רומנים היסטוריים, וספרי הרפתקאות. העולם של העבר מרתק אותי – התהליכים, האישים, והמבנים שעיצבו את האנושות כפי שאנו מכירים אותה היום.
+                    </p>
+                    <p class="lang-en">
+                        Hello, my name is Ram. I am an independent researcher driven by a deep passion for history, biographies, historical novels, and adventure books. The world of the past fascinates me – the processes, the personalities, and the structures that shaped humanity as we know it today.
+                    </p>
+
+                    <p class="lang-he">
+                        מעבר לקריאה ולמחקר, אני מוצא סיפוק עצום ביצירה באמצעות בינה מלאכותית. אני רואה ב-AI שותף מחקרי ויצירתי המאפשר לי להחיות את ההיסטוריה ולהנגיש אותה בצורות חדשות ומרתקות – כמו בפרויקט אדריכלות הכוח המוצג באתר זה. 
+                    </p>
+                    <p class="lang-en">
+                        Beyond reading and researching, I find immense satisfaction in creating with Artificial Intelligence. I view AI as a research and creative partner that allows me to bring history to life and make it accessible in new and fascinating ways – just like the Architecture of Power project presented on this site.
+                    </p>
+                    
+                    <p class="lang-he">
+                        החיים זימנו לי התמודדות עם דיסאוטונומיה משפחתית (FD), מחלה גנטית נדירה, אך ההתמודדות הזו רק מחזקת את הרצון שלי לחקור, להבין את העולם, ולהשאיר חותם של ידע, דיוק ועומק בכל פרויקט שאני לוקח על עצמי. "פרוטוקול ללא קיצורי דרך" הוא לא רק הנחיה טכנית עבורי, אלא דרך חיים של חקר האמת.
+                    </p>
+                    <p class="lang-en">
+                        Life has presented me with the challenge of Familial Dysautonomia (FD), a rare genetic disease, but this challenge only strengthens my desire to explore, understand the world, and leave a mark of knowledge, precision, and depth in every project I undertake. The "No Shortcuts Protocol" is not just a technical guideline for me, but a way of life in pursuit of truth.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 p-6 border-t border-gray-700 mt-12">
+        <div class="max-w-7xl mx-auto text-center text-gray-400">
+            <p>
+                <span class="lang-he">האתר נבנה על ידי ג'מיני ורם.</span>
+                <span class="lang-en">This site was built by Gemini and Ram.</span>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
+
+```
