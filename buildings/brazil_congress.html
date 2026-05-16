@@ -1,0 +1,215 @@
+```html
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="lang-he">ארמון הקונגרס הלאומי - ברזיל</title>
+    <title class="lang-en" style="display: none;">National Congress Palace - Brazil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; }
+        .lang-en { display: none; }
+        .lang-en-inline { display: none; }
+    </style>
+    <script>
+        function applyLanguage(lang) {
+            document.querySelectorAll('.lang-he').forEach(el => el.style.display = lang === 'he' ? 'block' : 'none');
+            document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
+            document.querySelectorAll('.lang-he-inline').forEach(el => el.style.display = lang === 'he' ? 'inline' : 'none');
+            document.querySelectorAll('.lang-en-inline').forEach(el => el.style.display = lang === 'en' ? 'inline' : 'none');
+            document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+        }
+
+        function toggleLanguage() {
+            const currentLang = localStorage.getItem('lang') || 'he';
+            const newLang = currentLang === 'he' ? 'en' : 'he';
+            localStorage.setItem('lang', newLang);
+            applyLanguage(newLang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            applyLanguage(localStorage.getItem('lang') || 'he');
+        });
+    </script>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="relative bg-gray-800 p-5 border-b border-gray-700 shadow-lg">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+            <div class="text-xl font-bold text-blue-400">
+                <span class="lang-he">היסטוריה באבן</span>
+                <span class="lang-en">History in Stone</span>
+            </div>
+            <div class="flex flex-wrap gap-4 text-sm md:text-base">
+                <a href="../index.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">ראשי</span><span class="lang-en">Home</span>
+                </a>
+                <a href="../about.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">אודות</span><span class="lang-en">About</span>
+                </a>
+                <a href="./capitol.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">הקפיטול</span><span class="lang-en">Capitol</span>
+                </a>
+                <a href="./westminster.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">וסטמינסטר</span><span class="lang-en">Westminster</span>
+                </a>
+                <a href="./reichstag.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">הרייכסטאג</span><span class="lang-en">Reichstag</span>
+                </a>
+                <a href="./brazil_congress.html" class="text-blue-400 font-bold border-b-2 border-blue-400 pb-1">
+                    <span class="lang-he">קונגרס ברזיל</span><span class="lang-en">Brazil Congress</span>
+                </a>
+            </div>
+            <button onclick="toggleLanguage()" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition-colors font-medium">
+                <span class="lang-he">English</span>
+                <span class="lang-en">עברית</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-4xl mx-auto p-6 md:p-10 w-full space-y-12">
+        <header class="border-b border-gray-700 pb-6">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">
+                <span class="lang-he">ארמון הקונגרס הלאומי (Palácio do Congresso Nacional)</span>
+                <span class="lang-en">Palace of the National Congress</span>
+            </h1>
+            <p class="text-xl text-blue-400 font-semibold">
+                <span class="lang-he">יצירת מופת מודרניסטית וחזון אוטופי בלב הסוואנה הברזילאית.</span>
+                <span class="lang-en">A modernist masterpiece and a utopian vision in the heart of the Brazilian savanna.</span>
+            </p>
+        </header>
+
+        <!-- Core Details -->
+        <section class="bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg border border-gray-700">
+            <ul class="space-y-4 text-lg">
+                <li class="flex flex-col md:flex-row gap-2">
+                    <strong class="text-blue-300 w-48 shrink-0">
+                        <span class="lang-he">אדריכלים מרכזיים:</span>
+                        <span class="lang-en">Main Architects:</span>
+                    </strong>
+                    <span class="text-gray-300">
+                        <span class="lang-he">אוסקר נימאייר (Oscar Niemeyer) - תכנון אדריכלי. לוסיו קוסטה (Lúcio Costa) - תכנון עירוני של העיר ברזיליה.</span>
+                        <span class="lang-en">Oscar Niemeyer - architectural design. Lúcio Costa - urban planning of the city of Brasília.</span>
+                    </span>
+                </li>
+                <li class="flex flex-col md:flex-row gap-2">
+                    <strong class="text-blue-300 w-48 shrink-0">
+                        <span class="lang-he">שנות הבנייה:</span>
+                        <span class="lang-en">Years of Construction:</span>
+                    </strong>
+                    <span class="text-gray-300">
+                        <span class="lang-he">הקמת העיר והמבנה בוצעו במהירות חסרת תקדים בין השנים 1956 ל-1960.</span>
+                        <span class="lang-en">The establishment of the city and the structure were carried out at unprecedented speed between 1956 and 1960.</span>
+                    </span>
+                </li>
+                <li class="flex flex-col md:flex-row gap-2">
+                    <strong class="text-blue-300 w-48 shrink-0">
+                        <span class="lang-he">סיבת הבנייה:</span>
+                        <span class="lang-en">Reason for Construction:</span>
+                    </strong>
+                    <span class="text-gray-300">
+                        <span class="lang-he">העברת עיר הבירה של ברזיל מריו דה ז'ניירו שעל החוף, אל אזור פנים הארץ (ברזיליה). המטרה הייתה לפתח את העורף הכלכלי, לאחד את המדינה הגדולה, ולשדר מסר לעולם על ברזיל כמעצמה מודרנית ועתידנית.</span>
+                        <span class="lang-en">To relocate the capital of Brazil from coastal Rio de Janeiro to the inland interior (Brasília). The goal was to develop the economic hinterland, unify the vast country, and send a message to the world about Brazil as a modern and futuristic power.</span>
+                    </span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Etymology -->
+        <section class="space-y-4">
+            <h2 class="text-3xl font-bold text-white border-r-4 border-blue-500 pr-4 lang-he">אטימולוגיה ומקור השם</h2>
+            <h2 class="text-3xl font-bold text-white border-l-4 border-blue-500 pl-4 lang-en">Etymology and Meaning</h2>
+            
+            <div class="bg-gray-800 p-6 rounded-2xl border border-gray-700 text-gray-300 text-lg leading-relaxed">
+                <p class="mb-4">
+                    <span class="lang-he">השם המלא בפורטוגזית הוא "Palácio do Congresso Nacional". כל אחת מהמילים נושאת משמעות שורשית ורעיונית המשקפת את תפקיד המבנה. להלן הפירוק המלא:</span>
+                    <span class="lang-en">The full name in Portuguese is "Palácio do Congresso Nacional". Each word carries a root and conceptual meaning reflecting the building's role. Here is the full breakdown:</span>
+                </p>
+                
+                <ul class="space-y-6">
+                    <li class="bg-gray-700/50 p-4 rounded-xl">
+                        <strong class="text-xl text-blue-300 block mb-2">
+                            <span class="lang-he">1. פלאסיו (Palácio):</span>
+                            <span class="lang-en">1. Palácio:</span>
+                        </strong>
+                        <span class="lang-he">משמעותו "ארמון". כמו בווסטמינסטר, המילה נגזרת מגבעת הפלטין (Palatine Hill) ברומא העתיקה. בברזיל, נעשה שימוש נרחב במילה "ארמון" כדי לתאר מבני ממשל מרכזיים, גם ברפובליקה דמוקרטית, כדי להעניק להם הוד, הדר וסמכות.</span>
+                        <span class="lang-en">Meaning "Palace". As in Westminster, the word is derived from the Palatine Hill in ancient Rome. In Brazil, the word "palace" is widely used to describe central government buildings, even in a democratic republic, to endow them with majesty, grandeur, and authority.</span>
+                    </li>
+                    
+                    <li class="bg-gray-700/50 p-4 rounded-xl">
+                        <strong class="text-xl text-blue-300 block mb-2">
+                            <span class="lang-he">2. קונגרסו (Congresso):</span>
+                            <span class="lang-en">2. Congresso:</span>
+                        </strong>
+                        <span class="lang-he">מקור המילה בלטינית הוא "Congressus". מילה זו מורכבת מהקידומת <strong>com-</strong> (יחד / עם) והפועל <strong>gradi</strong> (ללכת / לצעוד). מכאן, המשמעות המילולית היא "לצעוד יחד" או "להתכנס". המושג מתאר באופן מושלם את הרעיון של נציגי העם המגיעים ממקומות שונים אל נקודה אחת כדי להחליט על צעדים משותפים עבור המדינה.</span>
+                        <span class="lang-en">The word originates from the Latin "Congressus". This word is composed of the prefix <strong>com-</strong> (together / with) and the verb <strong>gradi</strong> (to walk / step). Hence, the literal meaning is "to walk together" or "to assemble". The concept perfectly describes the idea of people's representatives coming from different places to one point to decide on joint steps for the country.</span>
+                    </li>
+
+                    <li class="bg-gray-700/50 p-4 rounded-xl">
+                        <strong class="text-xl text-blue-300 block mb-2">
+                            <span class="lang-he">3. נאסיונל (Nacional):</span>
+                            <span class="lang-en">3. Nacional:</span>
+                        </strong>
+                        <span class="lang-he">לאומי. מהמילה הלטינית "Natio" (אומה, גזע של אנשים), שמקורה בפועל natus (להיוולד). המילה באה להדגיש שמבנה זה אינו משרת מחוז מסוים (לעומת הקפיטולים של המדינות השונות בברזיל), אלא את האומה הברזילאית כולה.</span>
+                        <span class="lang-en">National. From the Latin word "Natio" (nation, race of people), derived from the verb natus (to be born). The word emphasizes that this structure does not serve a specific province (compared to the capitols of the various states in Brazil), but rather the entire Brazilian nation.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Historical Background -->
+        <section class="space-y-4">
+            <h2 class="text-3xl font-bold text-white border-r-4 border-blue-500 pr-4 lang-he">רקע היסטורי ואדריכלי מקיף</h2>
+            <h2 class="text-3xl font-bold text-white border-l-4 border-blue-500 pl-4 lang-en">Comprehensive Historical & Architectural Background</h2>
+            
+            <div class="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-6">
+                <div class="lang-he">
+                    <p>ארמון הקונגרס הלאומי בברזיליה מייצג את אחד הניסויים העירוניים והאדריכליים השאפתניים ביותר במאה ה-20. באמצע שנות ה-50, נשיא ברזיל ז'וסלינו קוביצ'ק החליט לממש חלום ישן המופיע בחוקה הברזילאית: העברת הבירה מהעיר הצפופה ריו דה ז'ניירו (שעל קו החוף) ללב אזור המישור הפנימי והשומם של ברזיל. מטרת העל הייתה "50 שנות התקדמות ב-5 שנים" – קידום כלכלי ופיתוח פנים הארץ העצום והמוזנח.</p>
+                    
+                    <p>העיר ברזיליה תוכננה כולה מראש על ידי מתכנן הערים לוסיו קוסטה בצורת מטוס או ציפור הפורשת כנפיים (תוכנית מונומנטלית הנקראת "Plano Piloto"). ב"תא הטייס" של עיר-המטוס, בכיכר המרכזית (כיכר שלוש הרשויות), החליט האדריכל אוסקר נימאייר להציב את הקונגרס הלאומי. נימאייר, מהאבות המייסדים של האדריכלות המודרניסטית, סלד מאדריכלות ניאו-קלאסית וכבדה (כדוגמת הקפיטול בארה"ב או בניינים באירופה). הוא רצה ליצור מבנה שמשדר קלילות, חופש, גמישות מחשבתית, ואופטימיות לעתיד, תוך שימוש בבטון מזוין כדי ליצור צורות מעוגלות הנראות כמרחפות.</p>
+
+                    <p>המבנה של ארמון הקונגרס עמוס בסמליות חזותית מרהיבה. הוא מורכב משלושה חלקים עיקריים:</p>
+                    <ul class="list-disc pr-6 pl-0 space-y-2 marker:text-blue-500">
+                        <li><strong>שני מגדלי המשרדים:</strong> ממוקמים במרכז, מתנשאים לגובה של 28 קומות. הם תוכננו להיות קרובים זה לזה כדי ליצור צורת האות "H" המסמלת את המילה Humanity (אנושות / הומניזם).</li>
+                        <li><strong>כיפה הפוכה (קעורה):</strong> נמצאת משמאל למגדלים ומשמשת כאולם מליאת <strong>הסנאט</strong> הברזילאי (המייצג את המדינות הפדרליות). הצורה הפונה כלפי מעלה מסמלת התבוננות פנימית, מחשבה, שיקול דעת, והיותם של הסנאטורים "פתוחים לרעיונות גבוהים".</li>
+                        <li><strong>כיפה רגילה (קמורה):</strong> נמצאת מימין למגדלים ומשמשת כאולם מליאת <strong>בית הנבחרים</strong> (המייצג את העם). הכיפה נראית כמו קערה הפוכה המכסה את האזור, מה שמסמל התכנסות, הגנה על העם, וקבלת החלטות סגורות ומעשיות.</li>
+                    </ul>
+
+                    <p>עיצובו של נימאייר נועד להיות פואטי ופונקציונלי כאחד. הגישה למבנה כוללת רמפה ענקית המזמינה את הציבור לעלות ממש על גג המבנה (שכן העם הוא הריבון), והשתקפות המבנה בבריכת המים שלפניו משדרת הרמוניה. בשנת 1987, הכריז אונסק"ו על העיר ברזיליה ועל מבניה המרכזיים כאתר מורשת עולמית, כהוקרה ליצירת המופת של האדריכלות המודרנית המיוצגת בצורה החדה ביותר בארמון הקונגרס הלאומי.</p>
+                </div>
+                
+                <div class="lang-en">
+                    <p>The Palace of the National Congress in Brasília represents one of the most ambitious urban and architectural experiments of the 20th century. In the mid-1950s, Brazilian President Juscelino Kubitschek decided to realize an old dream enshrined in the Brazilian constitution: moving the capital from the crowded city of Rio de Janeiro (on the coast) to the heart of Brazil's inland plateau. The overarching goal was "50 years of progress in 5" - economic promotion and development of the vast, neglected interior.</p>
+                    
+                    <p>The city of Brasília was entirely planned from scratch by urban planner Lúcio Costa in the shape of an airplane or a bird spreading its wings (a monumental plan called the "Plano Piloto"). In the "cockpit" of this airplane-city, in the central square (Square of the Three Powers), architect Oscar Niemeyer decided to place the National Congress. Niemeyer, one of the founding fathers of modernist architecture, loathed heavy, neoclassical architecture (such as the US Capitol or buildings in Europe). He wanted to create a structure that conveys lightness, freedom, mental flexibility, and optimism for the future, using reinforced concrete to create rounded shapes that appear to float.</p>
+
+                    <p>The structure of the Congress Palace is loaded with spectacular visual symbolism. It consists of three main parts:</p>
+                    <ul class="list-disc pl-6 space-y-2 marker:text-blue-500">
+                        <li><strong>The Two Office Towers:</strong> Located in the center, rising to 28 stories. They were designed to be close to each other to create the shape of the letter "H" symbolizing Humanity (or humanism).</li>
+                        <li><strong>Inverted (Concave) Dome:</strong> Located to the left of the towers and serves as the plenary hall of the Brazilian <strong>Senate</strong> (representing the federal states). The upward-facing shape symbolizes introspection, thought, deliberation, and the senators being "open to higher ideas".</li>
+                        <li><strong>Regular (Convex) Dome:</strong> Located to the right of the towers and serves as the plenary hall of the <strong>Chamber of Deputies</strong> (representing the people). The dome looks like an inverted bowl covering the area, symbolizing assembly, protection of the people, and making closed, practical decisions.</li>
+                    </ul>
+
+                    <p>Niemeyer's design was intended to be both poetic and functional. The approach to the building includes a giant ramp that invites the public to walk literally on the roof of the structure (since the people are sovereign), and the reflection of the building in the water pool in front of it conveys harmony. In 1987, UNESCO declared the city of Brasília and its central structures a World Heritage site, in recognition of the masterpiece of modern architecture most sharply represented by the Palace of the National Congress.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 p-6 border-t border-gray-700 mt-12">
+        <div class="max-w-7xl mx-auto text-center text-gray-400">
+            <p>
+                <span class="lang-he">האתר נבנה על ידי ג'מיני ורם.</span>
+                <span class="lang-en">This site was built by Gemini and Ram.</span>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
+
+```
