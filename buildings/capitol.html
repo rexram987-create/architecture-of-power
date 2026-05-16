@@ -1,0 +1,196 @@
+```html
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="lang-he">הקפיטול - ארצות הברית</title>
+    <title class="lang-en" style="display: none;">The Capitol - USA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; }
+        .lang-en { display: none; }
+        .lang-en-inline { display: none; }
+    </style>
+    <script>
+        function applyLanguage(lang) {
+            document.querySelectorAll('.lang-he').forEach(el => el.style.display = lang === 'he' ? 'block' : 'none');
+            document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
+            document.querySelectorAll('.lang-he-inline').forEach(el => el.style.display = lang === 'he' ? 'inline' : 'none');
+            document.querySelectorAll('.lang-en-inline').forEach(el => el.style.display = lang === 'en' ? 'inline' : 'none');
+            document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+        }
+
+        function toggleLanguage() {
+            const currentLang = localStorage.getItem('lang') || 'he';
+            const newLang = currentLang === 'he' ? 'en' : 'he';
+            localStorage.setItem('lang', newLang);
+            applyLanguage(newLang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            applyLanguage(localStorage.getItem('lang') || 'he');
+        });
+    </script>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="relative bg-gray-800 p-5 border-b border-gray-700 shadow-lg">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+            <div class="text-xl font-bold text-blue-400">
+                <span class="lang-he">היסטוריה באבן</span>
+                <span class="lang-en">History in Stone</span>
+            </div>
+            <div class="flex flex-wrap gap-4 text-sm md:text-base">
+                <a href="../index.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">ראשי</span><span class="lang-en">Home</span>
+                </a>
+                <a href="../about.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">אודות</span><span class="lang-en">About</span>
+                </a>
+                <a href="./capitol.html" class="text-blue-400 font-bold border-b-2 border-blue-400 pb-1">
+                    <span class="lang-he">הקפיטול</span><span class="lang-en">Capitol</span>
+                </a>
+                <a href="./westminster.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">וסטמינסטר</span><span class="lang-en">Westminster</span>
+                </a>
+                <a href="./reichstag.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">הרייכסטאג</span><span class="lang-en">Reichstag</span>
+                </a>
+                <a href="./brazil_congress.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">קונגרס ברזיל</span><span class="lang-en">Brazil Congress</span>
+                </a>
+            </div>
+            <button onclick="toggleLanguage()" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition-colors font-medium">
+                <span class="lang-he">English</span>
+                <span class="lang-en">עברית</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-4xl mx-auto p-6 md:p-10 w-full space-y-12">
+        <header class="border-b border-gray-700 pb-6">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">
+                <span class="lang-he">הקפיטול (United States Capitol)</span>
+                <span class="lang-en">The United States Capitol</span>
+            </h1>
+            <p class="text-xl text-blue-400 font-semibold">
+                <span class="lang-he">מקדש הדמוקרטיה האמריקאית בוושינגטון די. סי.</span>
+                <span class="lang-en">The Temple of American Democracy in Washington D.C.</span>
+            </p>
+        </header>
+
+        <!-- Core Details -->
+        <section class="bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg border border-gray-700">
+            <ul class="space-y-4 text-lg">
+                <li class="flex flex-col md:flex-row gap-2">
+                    <strong class="text-blue-300 w-48 shrink-0">
+                        <span class="lang-he">אדריכלים מרכזיים:</span>
+                        <span class="lang-en">Main Architects:</span>
+                    </strong>
+                    <span class="text-gray-300">
+                        <span class="lang-he">ויליאם תורנטון (התכנון המקורי), בנג'מין הנרי לטרוב, צ'ארלס בולפינץ', ותומאס יו. וולטר (מתכנן הכיפה הגדולה).</span>
+                        <span class="lang-en">William Thornton (Original design), Benjamin Henry Latrobe, Charles Bulfinch, and Thomas U. Walter (Designer of the grand dome).</span>
+                    </span>
+                </li>
+                <li class="flex flex-col md:flex-row gap-2">
+                    <strong class="text-blue-300 w-48 shrink-0">
+                        <span class="lang-he">שנות הבנייה:</span>
+                        <span class="lang-en">Years of Construction:</span>
+                    </strong>
+                    <span class="text-gray-300">
+                        <span class="lang-he">הנחת אבן הפינה ב-1793. הבנייה נמשכה בגלים; הכיפה הנוכחית הושלמה ב-1866.</span>
+                        <span class="lang-en">Cornerstone laid in 1793. Construction continued in phases; the current dome was completed in 1866.</span>
+                    </span>
+                </li>
+                <li class="flex flex-col md:flex-row gap-2">
+                    <strong class="text-blue-300 w-48 shrink-0">
+                        <span class="lang-he">סיבת הבנייה:</span>
+                        <span class="lang-en">Reason for Construction:</span>
+                    </strong>
+                    <span class="text-gray-300">
+                        <span class="lang-he">לשמש כמושב הרשות המחוקקת (הקונגרס) של הרפובליקה החדשה, ולייצג פיזית את האידיאלים הדמוקרטיים והחוקתיים של ארצות הברית לאחר העצמאות.</span>
+                        <span class="lang-en">To serve as the seat of the legislative branch (Congress) of the new republic, and to physically represent the democratic and constitutional ideals of the United States after independence.</span>
+                    </span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Etymology -->
+        <section class="space-y-4">
+            <h2 class="text-3xl font-bold text-white border-r-4 border-blue-500 pr-4 lang-he">אטימולוגיה ומקור השם</h2>
+            <h2 class="text-3xl font-bold text-white border-l-4 border-blue-500 pl-4 lang-en">Etymology and Meaning</h2>
+            
+            <div class="bg-gray-800 p-6 rounded-2xl border border-gray-700 text-gray-300 text-lg leading-relaxed">
+                <p class="mb-4">
+                    <span class="lang-he">השם "קפיטול" נבחר בקפידה על ידי תומאס ג'פרסון, שרצה ליצור חיבור סימבולי בין הדמוקרטיה האמריקאית הצעירה לבין הרפובליקה הרומית העתיקה. הנה הפירוק המלא של מקור השם:</span>
+                    <span class="lang-en">The name "Capitol" was carefully chosen by Thomas Jefferson, who wanted to create a symbolic connection between the young American democracy and the ancient Roman Republic. Here is the full breakdown of the name's origin:</span>
+                </p>
+                
+                <ul class="space-y-6">
+                    <li class="bg-gray-700/50 p-4 rounded-xl">
+                        <strong class="text-xl text-blue-300 block mb-2">
+                            <span class="lang-he">1. קפיטוליום (Capitolium):</span>
+                            <span class="lang-en">1. Capitolium:</span>
+                        </strong>
+                        <span class="lang-he">השם נגזר ישירות מ"גבעת הקפיטולין" (Capitoline Hill) שברומא העתיקה. על גבעה זו ניצב ה"קפיטוליום" – המקדש המרכזי והחשוב ביותר ברומא, שהוקדש ליופיטר אופטימוס מקסימוס (Jupiter Optimus Maximus - יופיטר הטוב והגדול ביותר). גבעה זו היוותה את המרכז הדתי והפוליטי של האימפריה הרומית.</span>
+                        <span class="lang-en">The name is directly derived from the "Capitoline Hill" in ancient Rome. On this hill stood the "Capitolium" - the most important and central temple in Rome, dedicated to Jupiter Optimus Maximus. This hill was the religious and political center of the Roman Empire.</span>
+                    </li>
+                    
+                    <li class="bg-gray-700/50 p-4 rounded-xl">
+                        <strong class="text-xl text-blue-300 block mb-2">
+                            <span class="lang-he">2. קפוט (Caput):</span>
+                            <span class="lang-en">2. Caput:</span>
+                        </strong>
+                        <span class="lang-he">מבחינה בלשנית (שורש לטיני), המילה Capitolium מגיעה מהמילה הלטינית <strong>"Caput"</strong>, שמשמעותה <strong>"ראש"</strong>. לפי האגדה הרומית, בעת חפירת יסודות המקדש ברומא, נמצאה באדמה גולגולת אדם שלמה (ראש), מה שפורש כאות לכך שרומא תהיה ה"ראש" של העולם. בהשאלה, ג'פרסון ראה בקונגרס את ה"ראש" המוביל של האומה האמריקאית.</span>
+                        <span class="lang-en">Linguistically (Latin root), the word Capitolium comes from the Latin word <strong>"Caput"</strong>, meaning <strong>"head"</strong>. According to Roman legend, when digging the foundations for the temple in Rome, a fully intact human skull (head) was found, which was interpreted as an omen that Rome would be the "head" of the world. Metaphorically, Jefferson saw the Congress as the leading "head" of the American nation.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Historical Background -->
+        <section class="space-y-4">
+            <h2 class="text-3xl font-bold text-white border-r-4 border-blue-500 pr-4 lang-he">רקע היסטורי ואדריכלי מקיף</h2>
+            <h2 class="text-3xl font-bold text-white border-l-4 border-blue-500 pl-4 lang-en">Comprehensive Historical & Architectural Background</h2>
+            
+            <div class="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-6">
+                <div class="lang-he">
+                    <p>הקפיטול של ארצות הברית אינו רק בניין משרדים ממשלתי, אלא המבנה הסמלי החשוב ביותר של האומה האמריקאית. התכנון האדריכלי שלו נולד מתוך תחרות שיזם הנשיא ג'ורג' וושינגטון בשנת 1792. העיצוב הזוכה, פרי עטו של רופא חובב אדריכלות בשם ויליאם תורנטון, נבחר בשל סגנונו הניאו-קלאסי ששאב השראה מהאדריכלות של יוון ורומא העתיקות. הבחירה בסגנון זה לא הייתה מקרית – היא נועדה להעביר מסר אידאולוגי ברור: ארצות הברית היא ממשיכת דרכן של הרפובליקות והדמוקרטיות הגדולות של העת העתיקה.</p>
+                    
+                    <p>היסטוריית הבנייה של הקפיטול רוויה במשברים. באוגוסט 1814, במהלך מלחמת 1812, הצבא הבריטי העלה באש את הבניין (כחלק משריפת וושינגטון). המבנה ניזוק קשות, אך ניצל מהרס מוחלט בזכות סופת גשמים פתאומית. שיקומו של הבניין לאחר השריפה נוהל על ידי האדריכל בנג'מין הנרי לטרוב, ולאחריו צ'ארלס בולפינץ', שתכננו את המבנה המרכזי עם כיפה צנועה מזו שאנו מכירים היום.</p>
+
+                    <p>לקראת אמצע המאה ה-19, עם התרחבותה של ארצות הברית והצטרפותן של מדינות חדשות לאיחוד, המבנה הפך לקטן מלהכיל את כל חברי הקונגרס. בשנות ה-50 של המאה ה-19 החלה הרחבה מאסיבית שכללה הוספת שני אגפים גדולים – אגף הסנאט בצפון ואגף בית הנבחרים בדרום. כתוצאה מהרחבת המבנה, הכיפה המקורית נראתה קטנה ולא פרופורציונלית. האדריכל תומאס יו. וולטר תכנן כיפת ברזל יצוק עצומה ומרשימה המורכבת למעשה משתי כיפות (פנימית וחיצונית), השואבת השראה מכיפת הפנתיאון בפריז ומכיפת קתדרלת סנט פול בלונדון.</p>
+
+                    <p>בניית הכיפה החדשה נמשכה גם במהלך מלחמת האזרחים האמריקאית העקובה מדם, בהוראתו הישירה של הנשיא אברהם לינקולן. לינקולן טען כי המשך בניית הקפיטול ישמש כסמל לעם האמריקאי שהאיחוד (The Union) ימשיך להתקיים ולשרוד את המלחמה. בדצמבר 1863, הוצבה בראש הכיפה "פסל החירות" (Statue of Freedom) - דמות נשית מברונזה האוחזת בחרב ובמגן. עד היום, הקפיטול עומד במוקד החיים הפוליטיים, משמש כאתר ההשבעה של נשיאי ארה"ב, ומהווה מוקד עלייה לרגל המבטא את עוצמתה של חוקת ארצות הברית.</p>
+                </div>
+                
+                <div class="lang-en">
+                    <p>The United States Capitol is not merely a government office building; it is the most important symbolic structure of the American nation. Its architectural design was born out of a competition initiated by President George Washington in 1792. The winning design, by an amateur architect and physician named William Thornton, was chosen for its neoclassical style, which drew inspiration from the architecture of ancient Greece and Rome. The choice of this style was not coincidental - it was intended to convey a clear ideological message: the United States is the successor to the great republics and democracies of antiquity.</p>
+                    
+                    <p>The construction history of the Capitol is fraught with crises. In August 1814, during the War of 1812, the British army set fire to the building (as part of the Burning of Washington). The structure was severely damaged but was saved from complete destruction by a sudden rainstorm. The building's restoration after the fire was managed by architect Benjamin Henry Latrobe, and later Charles Bulfinch, who designed the central structure with a more modest dome than the one we know today.</p>
+
+                    <p>By the mid-19th century, with the expansion of the United States and the admission of new states to the Union, the building became too small to accommodate all members of Congress. In the 1850s, a massive expansion began, which included adding two large wings - the Senate wing on the north and the House of Representatives wing on the south. As a result of the building's expansion, the original dome looked small and disproportionate. Architect Thomas U. Walter designed a massive and impressive cast-iron dome consisting essentially of two domes (inner and outer), drawing inspiration from the dome of the Panthéon in Paris and the dome of St. Paul's Cathedral in London.</p>
+
+                    <p>The construction of the new dome continued even during the bloody American Civil War, by direct order of President Abraham Lincoln. Lincoln argued that the continued construction of the Capitol would serve as a symbol to the American people that the Union would continue to exist and survive the war. In December 1863, the "Statue of Freedom" - a bronze female figure holding a sword and shield - was placed atop the dome. To this day, the Capitol stands at the center of political life, serves as the inauguration site for US Presidents, and is a focal point that expresses the power of the United States Constitution.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 p-6 border-t border-gray-700 mt-12">
+        <div class="max-w-7xl mx-auto text-center text-gray-400">
+            <p>
+                <span class="lang-he">האתר נבנה על ידי ג'מיני ורם.</span>
+                <span class="lang-en">This site was built by Gemini and Ram.</span>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
+
+```
