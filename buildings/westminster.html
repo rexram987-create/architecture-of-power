@@ -1,0 +1,204 @@
+```html
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="lang-he">ארמון וסטמינסטר - בריטניה</title>
+    <title class="lang-en" style="display: none;">Palace of Westminster - UK</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; }
+        .lang-en { display: none; }
+        .lang-en-inline { display: none; }
+    </style>
+    <script>
+        function applyLanguage(lang) {
+            document.querySelectorAll('.lang-he').forEach(el => el.style.display = lang === 'he' ? 'block' : 'none');
+            document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
+            document.querySelectorAll('.lang-he-inline').forEach(el => el.style.display = lang === 'he' ? 'inline' : 'none');
+            document.querySelectorAll('.lang-en-inline').forEach(el => el.style.display = lang === 'en' ? 'inline' : 'none');
+            document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+        }
+
+        function toggleLanguage() {
+            const currentLang = localStorage.getItem('lang') || 'he';
+            const newLang = currentLang === 'he' ? 'en' : 'he';
+            localStorage.setItem('lang', newLang);
+            applyLanguage(newLang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            applyLanguage(localStorage.getItem('lang') || 'he');
+        });
+    </script>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="relative bg-gray-800 p-5 border-b border-gray-700 shadow-lg">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+            <div class="text-xl font-bold text-blue-400">
+                <span class="lang-he">היסטוריה באבן</span>
+                <span class="lang-en">History in Stone</span>
+            </div>
+            <div class="flex flex-wrap gap-4 text-sm md:text-base">
+                <a href="../index.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">ראשי</span><span class="lang-en">Home</span>
+                </a>
+                <a href="../about.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">אודות</span><span class="lang-en">About</span>
+                </a>
+                <a href="./capitol.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">הקפיטול</span><span class="lang-en">Capitol</span>
+                </a>
+                <a href="./westminster.html" class="text-blue-400 font-bold border-b-2 border-blue-400 pb-1">
+                    <span class="lang-he">וסטמינסטר</span><span class="lang-en">Westminster</span>
+                </a>
+                <a href="./reichstag.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">הרייכסטאג</span><span class="lang-en">Reichstag</span>
+                </a>
+                <a href="./brazil_congress.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">קונגרס ברזיל</span><span class="lang-en">Brazil Congress</span>
+                </a>
+            </div>
+            <button onclick="toggleLanguage()" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition-colors font-medium">
+                <span class="lang-he">English</span>
+                <span class="lang-en">עברית</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-4xl mx-auto p-6 md:p-10 w-full space-y-12">
+        <header class="border-b border-gray-700 pb-6">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">
+                <span class="lang-he">ארמון וסטמינסטר (Palace of Westminster)</span>
+                <span class="lang-en">Palace of Westminster</span>
+            </h1>
+            <p class="text-xl text-blue-400 font-semibold">
+                <span class="lang-he">אם הפרלמנטים וסמל האימפריה הבריטית על גדות התמזה.</span>
+                <span class="lang-en">The Mother of Parliaments and symbol of the British Empire on the banks of the Thames.</span>
+            </p>
+        </header>
+
+        <!-- Core Details -->
+        <section class="bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg border border-gray-700">
+            <ul class="space-y-4 text-lg">
+                <li class="flex flex-col md:flex-row gap-2">
+                    <strong class="text-blue-300 w-48 shrink-0">
+                        <span class="lang-he">אדריכלים מרכזיים:</span>
+                        <span class="lang-en">Main Architects:</span>
+                    </strong>
+                    <span class="text-gray-300">
+                        <span class="lang-he">צ'ארלס בארי ואוגוסטוס פוג'ין (האחראי לעיצוב הגותי המפורט).</span>
+                        <span class="lang-en">Charles Barry and Augustus Pugin (Responsible for the detailed Gothic design).</span>
+                    </span>
+                </li>
+                <li class="flex flex-col md:flex-row gap-2">
+                    <strong class="text-blue-300 w-48 shrink-0">
+                        <span class="lang-he">שנות הבנייה:</span>
+                        <span class="lang-en">Years of Construction:</span>
+                    </strong>
+                    <span class="text-gray-300">
+                        <span class="lang-he">מבנה מקורי מהמאה ה-11 (1016). המבנה הנוכחי נבנה ברובו בין השנים 1840–1876.</span>
+                        <span class="lang-en">Original structure from the 11th century (1016). The current structure was mostly built between 1840–1876.</span>
+                    </span>
+                </li>
+                <li class="flex flex-col md:flex-row gap-2">
+                    <strong class="text-blue-300 w-48 shrink-0">
+                        <span class="lang-he">סיבת הבנייה:</span>
+                        <span class="lang-en">Reason for Construction:</span>
+                    </strong>
+                    <span class="text-gray-300">
+                        <span class="lang-he">במקור שימש כארמון מלכותי למלכי אנגליה. לאחר השריפה הגדולה של 1834, נבנה מחדש במיוחד כדי לשמש כמשכנו של הפרלמנט הבריטי (בית הנבחרים ובית הלורדים).</span>
+                        <span class="lang-en">Originally served as a royal palace for the Kings of England. After the Great Fire of 1834, it was rebuilt specifically to serve as the seat of the British Parliament (House of Commons and House of Lords).</span>
+                    </span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Etymology -->
+        <section class="space-y-4">
+            <h2 class="text-3xl font-bold text-white border-r-4 border-blue-500 pr-4 lang-he">אטימולוגיה ומקור השם</h2>
+            <h2 class="text-3xl font-bold text-white border-l-4 border-blue-500 pl-4 lang-en">Etymology and Meaning</h2>
+            
+            <div class="bg-gray-800 p-6 rounded-2xl border border-gray-700 text-gray-300 text-lg leading-relaxed">
+                <p class="mb-4">
+                    <span class="lang-he">השם "וסטמינסטר" מספר את סיפורה הגיאוגרפי והדתי של לונדון העתיקה. השם מורכב משתי מילים המציינות כיוון וסוג של מבנה דתי. להלן הפירוק המלא:</span>
+                    <span class="lang-en">The name "Westminster" tells the geographical and religious story of early London. The name is composed of two words indicating direction and a type of religious structure. Here is the full breakdown:</span>
+                </p>
+                
+                <ul class="space-y-6">
+                    <li class="bg-gray-700/50 p-4 rounded-xl">
+                        <strong class="text-xl text-blue-300 block mb-2">
+                            <span class="lang-he">1. וסט (West):</span>
+                            <span class="lang-en">1. West:</span>
+                        </strong>
+                        <span class="lang-he">פירושו המילולי הוא הכיוון "מערב". התייחסות זו באה להבדיל את האזור מהמרכז המסחרי הישן של לונדון (הסיטי של לונדון - The City) ששכן מזרחית אליו.</span>
+                        <span class="lang-en">Literally means the direction "West". This reference came to distinguish the area from the old commercial center of London (The City of London) which lay to its east.</span>
+                    </li>
+                    
+                    <li class="bg-gray-700/50 p-4 rounded-xl">
+                        <strong class="text-xl text-blue-300 block mb-2">
+                            <span class="lang-he">2. מינסטר (Minster):</span>
+                            <span class="lang-en">2. Minster:</span>
+                        </strong>
+                        <span class="lang-he">מילה מאנגלית עתיקה (mynster) שמקורה במילה הלטינית "monasterium" (מנזר). באנגליה של ימי הביניים, המונח התייחס לכל כנסייה גדולה או קתדרלה. "וסטמינסטר" היה למעשה "הכנסייה המערבית" (מנזר וסטמינסטר הסמוך), בניגוד ל"כנסייה המזרחית" - קתדרלת סנט פול ששכנה במזרח (הסיטי). הארמון קיבל את שמו מהאזור ומהכנסייה הסמוכה אליו.</span>
+                        <span class="lang-en">An Old English word (mynster) derived from the Latin word "monasterium" (monastery). In medieval England, the term referred to any large church or cathedral. "Westminster" was essentially "the western church" (the nearby Westminster Abbey), as opposed to the "eastern church" - St. Paul's Cathedral which was in the east (The City). The palace took its name from the area and the adjacent church.</span>
+                    </li>
+                     <li class="bg-gray-700/50 p-4 rounded-xl">
+                        <strong class="text-xl text-blue-300 block mb-2">
+                            <span class="lang-he">3. ארמון (Palace):</span>
+                            <span class="lang-en">3. Palace:</span>
+                        </strong>
+                        <span class="lang-he">התואר "ארמון" נשמר עד היום למרות שהמבנה משמש לפרלמנט. הסיבה היא היסטורית: המבנה היה במקור מעון המגורים המרכזי של מלכי אנגליה מימי אדוארד המודה (המאה ה-11) ועד לתקופתו של הנרי השמיני (1512). המקור האטימולוגי של המילה Palace הוא מגבעת הפלטין (Palatine Hill) ברומא, שם שכנו ארמונות הקיסרים.</span>
+                        <span class="lang-en">The title "Palace" is retained to this day even though the structure is used for the Parliament. The reason is historical: the building was originally the primary royal residence of the Kings of England from the time of Edward the Confessor (11th century) until the reign of Henry VIII (1512). The etymological root of the word Palace is from the Palatine Hill in Rome, where the emperors' palaces were located.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Historical Background -->
+        <section class="space-y-4">
+            <h2 class="text-3xl font-bold text-white border-r-4 border-blue-500 pr-4 lang-he">רקע היסטורי ואדריכלי מקיף</h2>
+            <h2 class="text-3xl font-bold text-white border-l-4 border-blue-500 pl-4 lang-en">Comprehensive Historical & Architectural Background</h2>
+            
+            <div class="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-6">
+                <div class="lang-he">
+                    <p>ארמון וסטמינסטר הוא אחד המבנים האייקוניים והמשפיעים ביותר בעולם, והוא מכונה לעיתים קרובות "אם הפרלמנטים" מאחר שמערכת השלטון שצמחה בו (שיטת וסטמינסטר) אומצה על ידי מדינות רבות ברחבי העולם והאימפריה הבריטית לשעבר. האתר החל את דרכו כארמון מלכותי למלכי אנגליה, החל מהמאה ה-11. אחד השרידים החשובים מאותה תקופה הוא "אולם וסטמינסטר" (Westminster Hall), שנבנה ב-1097 ושרד אירועי הרס רבים, ובו התקיימו משפטים היסטוריים חשובים (כמו משפטו של צ'ארלס הראשון שנידון למוות).</p>
+                    
+                    <p>נקודת המפנה הדרמטית ביותר בהיסטוריה של המבנה אירעה ב-16 באוקטובר 1834. שריפת ענק, שפרצה עקב שריפת כפיות עץ ששימשו לרישום מיסים בתנור, כילתה כמעט לחלוטין את הארמון הישן. בעקבות האסון, הוחלט לבנות את הארמון מחדש והוכרזה תחרות אדריכלים לאומית. הדרישה הייתה שהסגנון יהיה או גותי או אליזבתני, כדי לבטא המשכיות לאומית, שורשיות נוצרית, ודחייה של הסגנון הניאו-קלאסי שזוהה באותה עת עם המהפכה הצרפתית וארצות הברית (כמו הקפיטול).</p>
+
+                    <p>האדריכל צ'ארלס בארי זכה בתחרות, והוא צירף אליו את אוגוסטוס פוג'ין, מומחה מבריק לאדריכלות גותית. יחד הם יצרו יצירת מופת של "התחייה הגותית" (Gothic Revival). הסגנון מאופיין בקווים אנכיים מודגשים, חלונות מחודדים, עיטורים מורכבים באבן, וצריחים רבים. תכנון הפנים שיקף את מערכת השלטון המעמדית בבריטניה: בית הלורדים (House of Lords) המייצג את האצולה, מעוצב בפאר רב, בגווני אדום עשיר וזהב, ואילו בית הנבחרים (House of Commons), המייצג את העם, מעוצב בפשטות יחסית ובגווני ירוק. הסידור של הספסלים בשורות מקבילות זו מול זו נוצר במקור משום שהפרלמנט ישב בקפלת סנט סטיבן, והסידור הצר השפיע עמוקות על האופי העימותי של הפוליטיקה הבריטית עד היום.</p>
+
+                    <p>קריסת הארמון הישן אפשרה לשלב במבנה החדש אלמנטים שהפכו לסמלי היכר עולמיים. הבולט שבהם הוא מגדל אליזבת (Elizabeth Tower), המוכר בטעות בשם "הביג בן" (Big Ben - שהוא למעשה שמו של הפעמון הענק בתוך המגדל). המבנה ספג פגיעות קשות בהפצצות הלוואפטה הגרמני במהלך "הבליץ" במלחמת העולם השנייה ב-1941, שבהן נהרס בית הנבחרים לחלוטין. הוא נבנה מחדש לאחר המלחמה בדיוק באותה מתכונת על ידי האדריכל ג'יילס גילברט סקוט, בהתאם להוראתו של ווינסטון צ'רצ'יל שאמר: "אנו מעצבים את הבניינים שלנו, ולאחר מכן הבניינים שלנו מעצבים אותנו".</p>
+                </div>
+                
+                <div class="lang-en">
+                    <p>The Palace of Westminster is one of the most iconic and influential buildings in the world, often referred to as the "Mother of Parliaments" because the system of government that developed within it (the Westminster system) was adopted by many countries around the world and the former British Empire. The site began as a royal palace for the Kings of England, starting in the 11th century. One of the most important surviving structures from that era is Westminster Hall, built in 1097, which survived numerous destructive events and hosted significant historical trials (such as the trial of Charles I who was sentenced to death).</p>
+                    
+                    <p>The most dramatic turning point in the building's history occurred on October 16, 1834. A massive fire, which broke out due to the burning of wooden tally sticks (used for tax accounting) in a stove, almost completely destroyed the old palace. Following the disaster, it was decided to rebuild the palace, and a national architectural competition was announced. The requirement was that the style be either Gothic or Elizabethan, to express national continuity, Christian roots, and a rejection of the neoclassical style that was identified at the time with the French Revolution and the United States (like the Capitol).</p>
+
+                    <p>Architect Charles Barry won the competition, and he enlisted Augustus Pugin, a brilliant expert in Gothic architecture. Together they created a masterpiece of the "Gothic Revival". The style is characterized by emphasized vertical lines, pointed arches, intricate stone carvings, and numerous spires. The interior layout reflected the class-based system of government in Britain: the House of Lords, representing the nobility, is opulently designed in rich red and gold, while the House of Commons, representing the people, is relatively simply designed in green tones. The arrangement of the benches in parallel facing rows originally came about because the Parliament sat in St Stephen's Chapel, and this narrow arrangement deeply influenced the adversarial nature of British politics to this day.</p>
+
+                    <p>The destruction of the old palace allowed for the incorporation of elements into the new structure that became global landmarks. The most prominent is the Elizabeth Tower, mistakenly known globally as "Big Ben" (which is actually the name of the giant bell inside the tower). The building suffered severe damage from bombings by the German Luftwaffe during "The Blitz" in World War II in 1941, in which the House of Commons chamber was completely destroyed. It was rebuilt after the war in exactly the same format by architect Giles Gilbert Scott, following the instruction of Winston Churchill, who famously said: "We shape our buildings, and afterwards our buildings shape us."</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 p-6 border-t border-gray-700 mt-12">
+        <div class="max-w-7xl mx-auto text-center text-gray-400">
+            <p>
+                <span class="lang-he">האתר נבנה על ידי ג'מיני ורם.</span>
+                <span class="lang-en">This site was built by Gemini and Ram.</span>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
+
+```
