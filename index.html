@@ -9,6 +9,12 @@
     <style>
         body { font-family: system-ui, -apple-system, sans-serif; }
         .lang-en, .lang-en-inline { display: none; }
+        .buildings-overlay { display: none; }
+        .buildings-overlay.open { display: block; }
+        .buildings-drawer { transform: translateX(100%); transition: transform 0.3s ease; }
+        .buildings-drawer.open { transform: translateX(0); }
+        html[dir="ltr"] .buildings-drawer { right: auto; left: 0; transform: translateX(-100%); }
+        html[dir="ltr"] .buildings-drawer.open { transform: translateX(0); }
     </style>
     <script>
         function applyLanguage(lang) {
@@ -19,102 +25,62 @@
             document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
             document.documentElement.lang = lang;
         }
-
-        function toggleLanguage() {
-            const currentLang = localStorage.getItem('lang') || 'he';
-            const newLang = currentLang === 'he' ? 'en' : 'he';
-            localStorage.setItem('lang', newLang);
-            applyLanguage(newLang);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            applyLanguage(localStorage.getItem('lang') || 'he');
-        });
+        function toggleLanguage() { const currentLang = localStorage.getItem('lang') || 'he'; const newLang = currentLang === 'he' ? 'en' : 'he'; localStorage.setItem('lang', newLang); applyLanguage(newLang); }
+        function openBuildingsMenu() { document.getElementById('buildingsOverlay')?.classList.add('open'); document.getElementById('buildingsDrawer')?.classList.add('open'); document.body.style.overflow = 'hidden'; }
+        function closeBuildingsMenu() { document.getElementById('buildingsOverlay')?.classList.remove('open'); document.getElementById('buildingsDrawer')?.classList.remove('open'); document.body.style.overflow = ''; }
+        document.addEventListener('DOMContentLoaded', () => applyLanguage(localStorage.getItem('lang') || 'he'));
+        document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeBuildingsMenu(); });
     </script>
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
 
     <nav class="relative bg-gray-800 p-5 border-b border-gray-700 shadow-lg">
         <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
-            <div class="text-xl font-bold text-blue-400">
-                <span class="lang-he">היסטוריה באבן</span>
-                <span class="lang-en">History in Stone</span>
-            </div>
-            <div class="flex flex-wrap gap-4 text-sm md:text-base">
+            <div class="text-xl font-bold text-blue-400"><span class="lang-he">היסטוריה באבן</span><span class="lang-en">History in Stone</span></div>
+            <div class="flex flex-wrap gap-4 text-sm md:text-base items-center">
                 <a href="./index.html" class="text-blue-400 font-bold border-b-2 border-blue-400 pb-1"><span class="lang-he">ראשי</span><span class="lang-en">Home</span></a>
                 <a href="./about.html" class="hover:text-blue-300 transition-colors"><span class="lang-he">אודות</span><span class="lang-en">About</span></a>
-                <a href="./buildings/capitol.html" class="hover:text-blue-300 transition-colors"><span class="lang-he">הקפיטול</span><span class="lang-en">Capitol</span></a>
-                <a href="./buildings/westminster.html" class="hover:text-blue-300 transition-colors"><span class="lang-he">וסטמינסטר</span><span class="lang-en">Westminster</span></a>
-                <a href="./buildings/reichstag.html" class="hover:text-blue-300 transition-colors"><span class="lang-he">הרייכסטאג</span><span class="lang-en">Reichstag</span></a>
-                <a href="./buildings/brazil_congress.html" class="hover:text-blue-300 transition-colors"><span class="lang-he">קונגרס ברזיל</span><span class="lang-en">Brazil Congress</span></a>
-                <a href="./buildings/knesset.html" class="hover:text-blue-300 transition-colors"><span class="lang-he">הכנסת</span><span class="lang-en">Knesset</span></a>
-                <a href="./buildings/kremlin.html" class="hover:text-blue-300 transition-colors"><span class="lang-he">הקרמלין</span><span class="lang-en">Kremlin</span></a>
-                <a href="./buildings/elysee_palace.html" class="hover:text-blue-300 transition-colors"><span class="lang-he">האליזה</span><span class="lang-en">Élysée</span></a>
-                <a href="./buildings/un_headquarters.html" class="hover:text-blue-300 transition-colors"><span class="lang-he">האו״ם</span><span class="lang-en">UN</span></a>
+                <button type="button" onclick="openBuildingsMenu()" class="bg-gray-700 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors font-medium shadow-md"><span class="lang-he">מבנים ☰</span><span class="lang-en">Buildings ☰</span></button>
             </div>
-            <button onclick="toggleLanguage()" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition-colors font-medium">
-                <span class="lang-he">English</span>
-                <span class="lang-en">עברית</span>
-            </button>
+            <button onclick="toggleLanguage()" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition-colors font-medium"><span class="lang-he">English</span><span class="lang-en">עברית</span></button>
         </div>
     </nav>
 
+    <div id="buildingsOverlay" class="buildings-overlay fixed inset-0 z-40 bg-black/60 backdrop-blur-sm" onclick="closeBuildingsMenu()"></div>
+    <aside id="buildingsDrawer" class="buildings-drawer fixed top-0 right-0 z-50 h-full w-80 max-w-[88vw] bg-gray-900 border-l border-gray-700 shadow-2xl overflow-y-auto">
+        <div class="sticky top-0 bg-gray-900/95 backdrop-blur border-b border-gray-700 p-5 flex items-center justify-between">
+            <h2 class="text-2xl font-extrabold text-white"><span class="lang-he">מבני שלטון</span><span class="lang-en">Government Buildings</span></h2>
+            <button type="button" onclick="closeBuildingsMenu()" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-blue-600 text-2xl leading-none">×</button>
+        </div>
+        <div class="p-5 space-y-3">
+            <a href="./buildings/capitol.html" class="block rounded-xl border border-gray-700 bg-gray-800 p-4 hover:border-blue-500 hover:bg-gray-700 transition-colors"><strong class="text-blue-300"><span class="lang-he">הקפיטול</span><span class="lang-en">The Capitol</span></strong><p class="text-sm text-gray-400 mt-1"><span class="lang-he">ארצות הברית</span><span class="lang-en">United States</span></p></a>
+            <a href="./buildings/westminster.html" class="block rounded-xl border border-gray-700 bg-gray-800 p-4 hover:border-blue-500 hover:bg-gray-700 transition-colors"><strong class="text-blue-300"><span class="lang-he">ארמון וסטמינסטר</span><span class="lang-en">Westminster</span></strong><p class="text-sm text-gray-400 mt-1"><span class="lang-he">בריטניה</span><span class="lang-en">United Kingdom</span></p></a>
+            <a href="./buildings/reichstag.html" class="block rounded-xl border border-gray-700 bg-gray-800 p-4 hover:border-blue-500 hover:bg-gray-700 transition-colors"><strong class="text-blue-300"><span class="lang-he">הרייכסטאג</span><span class="lang-en">Reichstag</span></strong><p class="text-sm text-gray-400 mt-1"><span class="lang-he">גרמניה</span><span class="lang-en">Germany</span></p></a>
+            <a href="./buildings/brazil_congress.html" class="block rounded-xl border border-gray-700 bg-gray-800 p-4 hover:border-blue-500 hover:bg-gray-700 transition-colors"><strong class="text-blue-300"><span class="lang-he">קונגרס ברזיל</span><span class="lang-en">Brazil Congress</span></strong><p class="text-sm text-gray-400 mt-1"><span class="lang-he">ברזיל</span><span class="lang-en">Brazil</span></p></a>
+            <a href="./buildings/knesset.html" class="block rounded-xl border border-gray-700 bg-gray-800 p-4 hover:border-blue-500 hover:bg-gray-700 transition-colors"><strong class="text-blue-300"><span class="lang-he">הכנסת</span><span class="lang-en">The Knesset</span></strong><p class="text-sm text-gray-400 mt-1"><span class="lang-he">ישראל</span><span class="lang-en">Israel</span></p></a>
+            <a href="./buildings/kremlin.html" class="block rounded-xl border border-gray-700 bg-gray-800 p-4 hover:border-blue-500 hover:bg-gray-700 transition-colors"><strong class="text-blue-300"><span class="lang-he">הקרמלין</span><span class="lang-en">The Kremlin</span></strong><p class="text-sm text-gray-400 mt-1"><span class="lang-he">רוסיה</span><span class="lang-en">Russia</span></p></a>
+            <a href="./buildings/elysee_palace.html" class="block rounded-xl border border-gray-700 bg-gray-800 p-4 hover:border-blue-500 hover:bg-gray-700 transition-colors"><strong class="text-blue-300"><span class="lang-he">ארמון האליזה</span><span class="lang-en">Élysée Palace</span></strong><p class="text-sm text-gray-400 mt-1"><span class="lang-he">צרפת</span><span class="lang-en">France</span></p></a>
+            <a href="./buildings/un_headquarters.html" class="block rounded-xl border border-gray-700 bg-gray-800 p-4 hover:border-blue-500 hover:bg-gray-700 transition-colors"><strong class="text-blue-300"><span class="lang-he">מטה האו״ם</span><span class="lang-en">UN Headquarters</span></strong><p class="text-sm text-gray-400 mt-1"><span class="lang-he">ניו יורק / בינלאומי</span><span class="lang-en">New York / International</span></p></a>
+        </div>
+    </aside>
+
     <main class="flex-grow max-w-6xl mx-auto p-6 md:p-10 w-full">
         <header class="text-center mb-16">
-            <p class="text-blue-400 font-bold tracking-widest uppercase mb-4">
-                <span class="lang-he">Architecture of Power</span>
-                <span class="lang-en">Architecture of Power</span>
-            </p>
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 text-white leading-tight">
-                <span class="lang-he">אדריכלות הכוח: מבני שלטון שעיצבו את העולם המודרני</span>
-                <span class="lang-en">Architecture of Power: Government Buildings That Shaped the Modern World</span>
-            </h1>
-            <p class="text-lg md:text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
-                <span class="lang-he">ברוכים הבאים למחקר היסטורי ואדריכלי הבוחן כיצד רעיונות דמוקרטיים, אימפריאליים, לאומיים ובינלאומיים נחקקו באבן, בזכוכית ובבטון. האתר מציג שמונה מבני שלטון מרכזיים, שכל אחד מהם מייצג תפיסה אחרת של כוח, זהות וריבונות.</span>
-                <span class="lang-en">Welcome to a historical and architectural study of how democratic, imperial, national, and international ideas were etched in stone, glass, and concrete. This site presents eight major government buildings, each representing a different idea of power, identity, and sovereignty.</span>
-            </p>
+            <p class="text-blue-400 font-bold tracking-widest uppercase mb-4"><span class="lang-he">Architecture of Power</span><span class="lang-en">Architecture of Power</span></p>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 text-white leading-tight"><span class="lang-he">אדריכלות הכוח: מבני שלטון שעיצבו את העולם המודרני</span><span class="lang-en">Architecture of Power: Government Buildings That Shaped the Modern World</span></h1>
+            <p class="text-lg md:text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto"><span class="lang-he">ברוכים הבאים למחקר היסטורי ואדריכלי הבוחן כיצד רעיונות דמוקרטיים, אימפריאליים, לאומיים ובינלאומיים נחקקו באבן, בזכוכית ובבטון. האתר מציג שמונה מבני שלטון מרכזיים, שכל אחד מהם מייצג תפיסה אחרת של כוח, זהות וריבונות.</span><span class="lang-en">Welcome to a historical and architectural study of how democratic, imperial, national, and international ideas were etched in stone, glass, and concrete. This site presents eight major government buildings, each representing a different idea of power, identity, and sovereignty.</span></p>
         </header>
-
         <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
-            <a href="./buildings/capitol.html" class="group block bg-gray-800 border border-gray-700 rounded-2xl p-7 hover:bg-gray-700 hover:border-blue-500 transition-all shadow-lg transform hover:-translate-y-1">
-                <h2 class="text-2xl font-bold mb-3 text-blue-400 group-hover:text-blue-300"><span class="lang-he">הקפיטול</span><span class="lang-en">The Capitol</span></h2>
-                <p class="text-gray-400"><span class="lang-he">סמל הרפובליקה האמריקאית, ניאו־קלאסיקה ודמוקרטיה חוקתית.</span><span class="lang-en">The symbol of the American republic, neoclassicism, and constitutional democracy.</span></p>
-            </a>
-            <a href="./buildings/westminster.html" class="group block bg-gray-800 border border-gray-700 rounded-2xl p-7 hover:bg-gray-700 hover:border-blue-500 transition-all shadow-lg transform hover:-translate-y-1">
-                <h2 class="text-2xl font-bold mb-3 text-blue-400 group-hover:text-blue-300"><span class="lang-he">ארמון וסטמינסטר</span><span class="lang-en">Westminster</span></h2>
-                <p class="text-gray-400"><span class="lang-he">אם הפרלמנטים, התחייה הגותית וסמכות האימפריה הבריטית.</span><span class="lang-en">The Mother of Parliaments, Gothic Revival, and imperial authority.</span></p>
-            </a>
-            <a href="./buildings/reichstag.html" class="group block bg-gray-800 border border-gray-700 rounded-2xl p-7 hover:bg-gray-700 hover:border-blue-500 transition-all shadow-lg transform hover:-translate-y-1">
-                <h2 class="text-2xl font-bold mb-3 text-blue-400 group-hover:text-blue-300"><span class="lang-he">הרייכסטאג</span><span class="lang-en">Reichstag</span></h2>
-                <p class="text-gray-400"><span class="lang-he">מאימפריה ודיקטטורה אל דמוקרטיה שקופה וכיפת זכוכית.</span><span class="lang-en">From empire and dictatorship to transparent democracy and a glass dome.</span></p>
-            </a>
-            <a href="./buildings/brazil_congress.html" class="group block bg-gray-800 border border-gray-700 rounded-2xl p-7 hover:bg-gray-700 hover:border-blue-500 transition-all shadow-lg transform hover:-translate-y-1">
-                <h2 class="text-2xl font-bold mb-3 text-blue-400 group-hover:text-blue-300"><span class="lang-he">קונגרס ברזיל</span><span class="lang-en">Brazil Congress</span></h2>
-                <p class="text-gray-400"><span class="lang-he">מודרניזם, חזון עתידני ואיזון בין רשויות בברזיליה.</span><span class="lang-en">Modernism, futuristic vision, and balance of powers in Brasília.</span></p>
-            </a>
-            <a href="./buildings/knesset.html" class="group block bg-gray-800 border border-gray-700 rounded-2xl p-7 hover:bg-gray-700 hover:border-blue-500 transition-all shadow-lg transform hover:-translate-y-1">
-                <h2 class="text-2xl font-bold mb-3 text-blue-400 group-hover:text-blue-300"><span class="lang-he">הכנסת</span><span class="lang-en">The Knesset</span></h2>
-                <p class="text-gray-400"><span class="lang-he">בית המחוקקים של ישראל וסמל הריבונות הדמוקרטית בירושלים.</span><span class="lang-en">Israel’s legislature and a symbol of democratic sovereignty in Jerusalem.</span></p>
-            </a>
-            <a href="./buildings/kremlin.html" class="group block bg-gray-800 border border-gray-700 rounded-2xl p-7 hover:bg-gray-700 hover:border-blue-500 transition-all shadow-lg transform hover:-translate-y-1">
-                <h2 class="text-2xl font-bold mb-3 text-blue-400 group-hover:text-blue-300"><span class="lang-he">הקרמלין</span><span class="lang-en">The Kremlin</span></h2>
-                <p class="text-gray-400"><span class="lang-he">מצודה, ארמון ושלטון — לב הכוח הרוסי לאורך הדורות.</span><span class="lang-en">Fortress, palace, and government — the heart of Russian power.</span></p>
-            </a>
-            <a href="./buildings/elysee_palace.html" class="group block bg-gray-800 border border-gray-700 rounded-2xl p-7 hover:bg-gray-700 hover:border-blue-500 transition-all shadow-lg transform hover:-translate-y-1">
-                <h2 class="text-2xl font-bold mb-3 text-blue-400 group-hover:text-blue-300"><span class="lang-he">ארמון האליזה</span><span class="lang-en">Élysée Palace</span></h2>
-                <p class="text-gray-400"><span class="lang-he">בית הנשיא הצרפתי — פאר אצילי שהפך לסמל רפובליקני.</span><span class="lang-en">The French president’s palace — aristocratic prestige turned republican symbol.</span></p>
-            </a>
-            <a href="./buildings/un_headquarters.html" class="group block bg-gray-800 border border-gray-700 rounded-2xl p-7 hover:bg-gray-700 hover:border-blue-500 transition-all shadow-lg transform hover:-translate-y-1">
-                <h2 class="text-2xl font-bold mb-3 text-blue-400 group-hover:text-blue-300"><span class="lang-he">מטה האו״ם</span><span class="lang-en">UN Headquarters</span></h2>
-                <p class="text-gray-400"><span class="lang-he">אדריכלות של דיפלומטיה עולמית ושלטון בינלאומי.</span><span class="lang-en">Architecture of global diplomacy and international governance.</span></p>
-            </a>
+            <a href="./buildings/capitol.html" class="group block bg-gray-800 border border-gray-700 rounded-2xl p-7 hover:bg-gray-700 hover:border-blue-500 transition-all shadow-lg transform hover:-translate-y-1"><h2 class="text-2xl font-bold mb-3 text-blue-400 group-hover:text-blue-300"><span class="lang-he">הקפיטול</span><span class="lang-en">The Capitol</span></h2><p class="text-gray-400"><span class="lang-he">סמל הרפובליקה האמריקאית, ניאו־קלאסיקה ודמוקרטיה חוקתית.</span><span class="lang-en">The symbol of the American republic, neoclassicism, and constitutional democracy.</span></p></a>
+            <a href="./buildings/westminster.html" class="group block bg-gray-800 border border-gray-700 rounded-2xl p-7 hover:bg-gray-700 hover:border-blue-500 transition-all shadow-lg transform hover:-translate-y-1"><h2 class="text-2xl font-bold mb-3 text-blue-400 group-hover:text-blue-300"><span class="lang-he">ארמון וסטמינסטר</span><span class="lang-en">Westminster</span></h2><p class="text-gray-400"><span class="lang-he">אם הפרלמנטים, התחייה הגותית וסמכות האימפריה הבריטית.</span><span class="lang-en">The Mother of Parliaments, Gothic Revival, and imperial authority.</span></p></a>
+            <a href="./buildings/reichstag.html" class="group block bg-gray-800 border border-gray-700 rounded-2xl p-7 hover:bg-gray-700 hover:border-blue-500 transition-all shadow-lg transform hover:-translate-y-1"><h2 class="text-2xl font-bold mb-3 text-blue-400 group-hover:text-blue-300"><span class="lang-he">הרייכסטאג</span><span class="lang-en">Reichstag</span></h2><p class="text-gray-400"><span class="lang-he">מאימפריה ודיקטטורה אל דמוקרטיה שקופה וכיפת זכוכית.</span><span class="lang-en">From empire and dictatorship to transparent democracy and a glass dome.</span></p></a>
+            <a href="./buildings/brazil_congress.html" class="group block bg-gray-800 border border-gray-700 rounded-2xl p-7 hover:bg-gray-700 hover:border-blue-500 transition-all shadow-lg transform hover:-translate-y-1"><h2 class="text-2xl font-bold mb-3 text-blue-400 group-hover:text-blue-300"><span class="lang-he">קונגרס ברזיל</span><span class="lang-en">Brazil Congress</span></h2><p class="text-gray-400"><span class="lang-he">מודרניזם, חזון עתידני ואיזון בין רשויות בברזיליה.</span><span class="lang-en">Modernism, futuristic vision, and balance of powers in Brasília.</span></p></a>
+            <a href="./buildings/knesset.html" class="group block bg-gray-800 border border-gray-700 rounded-2xl p-7 hover:bg-gray-700 hover:border-blue-500 transition-all shadow-lg transform hover:-translate-y-1"><h2 class="text-2xl font-bold mb-3 text-blue-400 group-hover:text-blue-300"><span class="lang-he">הכנסת</span><span class="lang-en">The Knesset</span></h2><p class="text-gray-400"><span class="lang-he">בית המחוקקים של ישראל וסמל הריבונות הדמוקרטית בירושלים.</span><span class="lang-en">Israel’s legislature and a symbol of democratic sovereignty in Jerusalem.</span></p></a>
+            <a href="./buildings/kremlin.html" class="group block bg-gray-800 border border-gray-700 rounded-2xl p-7 hover:bg-gray-700 hover:border-blue-500 transition-all shadow-lg transform hover:-translate-y-1"><h2 class="text-2xl font-bold mb-3 text-blue-400 group-hover:text-blue-300"><span class="lang-he">הקרמלין</span><span class="lang-en">The Kremlin</span></h2><p class="text-gray-400"><span class="lang-he">מצודה, ארמון ושלטון — לב הכוח הרוסי לאורך הדורות.</span><span class="lang-en">Fortress, palace, and government — the heart of Russian power.</span></p></a>
+            <a href="./buildings/elysee_palace.html" class="group block bg-gray-800 border border-gray-700 rounded-2xl p-7 hover:bg-gray-700 hover:border-blue-500 transition-all shadow-lg transform hover:-translate-y-1"><h2 class="text-2xl font-bold mb-3 text-blue-400 group-hover:text-blue-300"><span class="lang-he">ארמון האליזה</span><span class="lang-en">Élysée Palace</span></h2><p class="text-gray-400"><span class="lang-he">בית הנשיא הצרפתי — פאר אצילי שהפך לסמל רפובליקני.</span><span class="lang-en">The French president’s palace — aristocratic prestige turned republican symbol.</span></p></a>
+            <a href="./buildings/un_headquarters.html" class="group block bg-gray-800 border border-gray-700 rounded-2xl p-7 hover:bg-gray-700 hover:border-blue-500 transition-all shadow-lg transform hover:-translate-y-1"><h2 class="text-2xl font-bold mb-3 text-blue-400 group-hover:text-blue-300"><span class="lang-he">מטה האו״ם</span><span class="lang-en">UN Headquarters</span></h2><p class="text-gray-400"><span class="lang-he">אדריכלות של דיפלומטיה עולמית ושלטון בינלאומי.</span><span class="lang-en">Architecture of global diplomacy and international governance.</span></p></a>
         </section>
     </main>
-
-    <footer class="bg-gray-800 p-6 border-t border-gray-700 mt-12">
-        <div class="max-w-7xl mx-auto text-center text-gray-400">
-            <p><span class="lang-he">האתר נבנה על ידי ג'מיני ורם.</span><span class="lang-en">This site was built by Gemini and Ram.</span></p>
-        </div>
-    </footer>
+    <footer class="bg-gray-800 p-6 border-t border-gray-700 mt-12"><div class="max-w-7xl mx-auto text-center text-gray-400"><p><span class="lang-he">האתר נבנה על ידי ג'מיני ורם.</span><span class="lang-en">This site was built by Gemini and Ram.</span></p></div></footer>
 </body>
 </html>
