@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -8,9 +7,30 @@
     <title class="lang-en" style="display: none;">About - Ram</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: system-ui, -apple-system, sans-serif; }
-        .lang-en { display: none; }
-        .lang-en-inline { display: none; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .lang-en {
+            display: none;
+        }
+
+        .lang-en-inline {
+            display: none;
+        }
+
+        .profile-image-button:focus-visible {
+            outline: 3px solid #60a5fa;
+            outline-offset: 6px;
+        }
+
+        .image-modal {
+            display: none;
+        }
+
+        .image-modal.open {
+            display: flex;
+        }
     </style>
     <script>
         function applyLanguage(lang) {
@@ -29,8 +49,39 @@
             applyLanguage(newLang);
         }
 
+        function openProfileModal() {
+            const modal = document.getElementById('profileImageModal');
+            if (!modal) return;
+
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProfileModal() {
+            const modal = document.getElementById('profileImageModal');
+            if (!modal) return;
+
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             applyLanguage(localStorage.getItem('lang') || 'he');
+
+            const modal = document.getElementById('profileImageModal');
+            if (modal) {
+                modal.addEventListener('click', (event) => {
+                    if (event.target === modal) {
+                        closeProfileModal();
+                    }
+                });
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeProfileModal();
+            }
         });
     </script>
 </head>
@@ -42,26 +93,39 @@
                 <span class="lang-he">היסטוריה באבן</span>
                 <span class="lang-en">History in Stone</span>
             </div>
+
             <div class="flex flex-wrap gap-4 text-sm md:text-base">
                 <a href="./index.html" class="hover:text-blue-300 transition-colors">
-                    <span class="lang-he">ראשי</span><span class="lang-en">Home</span>
+                    <span class="lang-he">ראשי</span>
+                    <span class="lang-en">Home</span>
                 </a>
+
                 <a href="./about.html" class="text-blue-400 font-bold border-b-2 border-blue-400 pb-1">
-                    <span class="lang-he">אודות</span><span class="lang-en">About</span>
+                    <span class="lang-he">אודות</span>
+                    <span class="lang-en">About</span>
                 </a>
+
                 <a href="./buildings/capitol.html" class="hover:text-blue-300 transition-colors">
-                    <span class="lang-he">הקפיטול</span><span class="lang-en">Capitol</span>
+                    <span class="lang-he">הקפיטול</span>
+                    <span class="lang-en">Capitol</span>
                 </a>
+
                 <a href="./buildings/westminster.html" class="hover:text-blue-300 transition-colors">
-                    <span class="lang-he">וסטמינסטר</span><span class="lang-en">Westminster</span>
+                    <span class="lang-he">וסטמינסטר</span>
+                    <span class="lang-en">Westminster</span>
                 </a>
+
                 <a href="./buildings/reichstag.html" class="hover:text-blue-300 transition-colors">
-                    <span class="lang-he">הרייכסטאג</span><span class="lang-en">Reichstag</span>
+                    <span class="lang-he">הרייכסטאג</span>
+                    <span class="lang-en">Reichstag</span>
                 </a>
+
                 <a href="./buildings/brazil_congress.html" class="hover:text-blue-300 transition-colors">
-                    <span class="lang-he">קונגרס ברזיל</span><span class="lang-en">Brazil Congress</span>
+                    <span class="lang-he">קונגרס ברזיל</span>
+                    <span class="lang-en">Brazil Congress</span>
                 </a>
             </div>
+
             <button onclick="toggleLanguage()" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition-colors font-medium">
                 <span class="lang-he">English</span>
                 <span class="lang-en">עברית</span>
@@ -71,9 +135,26 @@
 
     <main class="flex-grow max-w-4xl mx-auto p-6 md:p-10 w-full">
         <div class="bg-gray-800 rounded-3xl p-8 md:p-12 shadow-2xl border border-gray-700 flex flex-col md:flex-row gap-10 items-center md:items-start">
-            
-            <div class="w-48 h-48 md:w-64 md:h-64 flex-shrink-0">
-                <img src="images/ramprofile.png" alt="Ram" onerror="this.src='https://via.placeholder.com/300x300/1f2937/60a5fa?text=Ram+Profile'" class="w-full h-full object-cover rounded-full border-4 border-blue-500 shadow-xl">
+
+            <div class="w-48 md:w-64 flex-shrink-0 text-center">
+                <button
+                    type="button"
+                    onclick="openProfileModal()"
+                    class="profile-image-button group w-48 h-48 md:w-64 md:h-64 rounded-full cursor-zoom-in"
+                    aria-label="הגדלת תמונת הפרופיל / Enlarge profile image"
+                >
+                    <img
+                        src="images/ramprofile.png"
+                        alt="Ram"
+                        onerror="this.src='https://via.placeholder.com/300x300/1f2937/60a5fa?text=Ram+Profile'"
+                        class="w-full h-full object-cover rounded-full border-4 border-blue-500 shadow-xl transition-transform duration-300 group-hover:scale-105"
+                    >
+                </button>
+
+                <p class="mt-4 text-sm text-blue-300">
+                    <span class="lang-he">לחצו על התמונה להגדלה</span>
+                    <span class="lang-en">Click the image to enlarge</span>
+                </p>
             </div>
 
             <div class="flex-1 space-y-6">
@@ -81,25 +162,28 @@
                     <span class="lang-he">אודותיי - רם</span>
                     <span class="lang-en">About Me - Ram</span>
                 </h1>
-                
+
                 <div class="space-y-4 text-lg text-gray-300 leading-relaxed">
                     <p class="lang-he">
                         שלום, שמי רם. אני חוקר עצמאי ומונע מתשוקה עמוקה להיסטוריה, ביוגרפיות, רומנים היסטוריים וספרי הרפתקאות. העולם של העבר מרתק אותי – התהליכים, האישים והמבנים שעיצבו את האנושות כפי שאנו מכירים אותה היום.
                     </p>
+
                     <p class="lang-en">
                         Hello, my name is Ram. I am an independent researcher driven by a deep passion for history, biographies, historical novels, and adventure books. The world of the past fascinates me – the processes, the personalities, and the structures that shaped humanity as we know it today.
                     </p>
 
                     <p class="lang-he">
-                        מעבר לקריאה ולמחקר, אני מוצא סיפוק עצום ביצירה באמצעות בינה מלאכותית. אני רואה ב-AI שותף מחקרי ויצירתי המאפשר לי להחיות את ההיסטוריה ולהנגיש אותה בצורות חדשות ומרתקות – כמו בפרויקט אדריכלות הכוח המוצג באתר זה. 
+                        מעבר לקריאה ולמחקר, אני מוצא סיפוק עצום ביצירה באמצעות בינה מלאכותית. אני רואה ב-AI שותף מחקרי ויצירתי המאפשר לי להחיות את ההיסטוריה ולהנגיש אותה בצורות חדשות ומרתקות – כמו בפרויקט אדריכלות הכוח המוצג באתר זה.
                     </p>
+
                     <p class="lang-en">
                         Beyond reading and researching, I find immense satisfaction in creating with Artificial Intelligence. I view AI as a research and creative partner that allows me to bring history to life and make it accessible in new and fascinating ways – just like the Architecture of Power project presented on this site.
                     </p>
-                    
+
                     <p class="lang-he">
                         החיים זימנו לי התמודדות עם דיסאוטונומיה משפחתית (FD), מחלה גנטית נדירה וחשוכת מרפא, אך ההתמודדות הזו רק מחזקת את הרצון שלי לחקור, להבין את העולם ולהשאיר חותם של ידע, דיוק ועומק בכל פרויקט שאני לוקח על עצמי. "פרוטוקול ללא קיצורי דרך" הוא לא רק הנחיה טכנית עבורי, אלא דרך חיים של חקר האמת המוחלטת.
                     </p>
+
                     <p class="lang-en">
                         Life has presented me with the challenge of Familial Dysautonomia (FD), a rare and incurable genetic disease, but this challenge only strengthens my desire to explore, understand the world, and leave a mark of knowledge, precision, and depth in every project I undertake. The "No Shortcuts Protocol" is not just a technical guideline for me, but a way of life in pursuit of ultimate truth.
                     </p>
@@ -107,6 +191,37 @@
             </div>
         </div>
     </main>
+
+    <div
+        id="profileImageModal"
+        class="image-modal fixed inset-0 z-50 items-center justify-center bg-black/85 p-4 md:p-8"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Profile image enlarged view"
+    >
+        <button
+            type="button"
+            onclick="closeProfileModal()"
+            class="absolute top-4 right-4 md:top-8 md:right-8 bg-gray-900/90 hover:bg-blue-600 text-white border border-gray-600 rounded-full w-12 h-12 text-3xl leading-none flex items-center justify-center shadow-xl transition-colors"
+            aria-label="Close image modal"
+        >
+            ×
+        </button>
+
+        <div class="max-w-4xl w-full text-center">
+            <img
+                src="images/ramprofile.png"
+                alt="Ram enlarged profile"
+                onerror="this.src='https://via.placeholder.com/900x900/1f2937/60a5fa?text=Ram+Profile'"
+                class="max-h-[82vh] max-w-full mx-auto rounded-3xl border-4 border-blue-500 shadow-2xl object-contain bg-gray-900"
+            >
+
+            <p class="mt-4 text-gray-300 text-sm md:text-base">
+                <span class="lang-he">לחצו מחוץ לתמונה או על × כדי לסגור</span>
+                <span class="lang-en">Click outside the image or × to close</span>
+            </p>
+        </div>
+    </div>
 
     <footer class="bg-gray-800 p-6 border-t border-gray-700 mt-12">
         <div class="max-w-7xl mx-auto text-center text-gray-400">
@@ -116,8 +231,6 @@
             </p>
         </div>
     </footer>
+
 </body>
 </html>
-
-
-```
