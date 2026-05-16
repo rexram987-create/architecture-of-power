@@ -1,0 +1,204 @@
+```html
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="lang-he">הרייכסטאג - גרמניה</title>
+    <title class="lang-en" style="display: none;">The Reichstag - Germany</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; }
+        .lang-en { display: none; }
+        .lang-en-inline { display: none; }
+    </style>
+    <script>
+        function applyLanguage(lang) {
+            document.querySelectorAll('.lang-he').forEach(el => el.style.display = lang === 'he' ? 'block' : 'none');
+            document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
+            document.querySelectorAll('.lang-he-inline').forEach(el => el.style.display = lang === 'he' ? 'inline' : 'none');
+            document.querySelectorAll('.lang-en-inline').forEach(el => el.style.display = lang === 'en' ? 'inline' : 'none');
+            document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+        }
+
+        function toggleLanguage() {
+            const currentLang = localStorage.getItem('lang') || 'he';
+            const newLang = currentLang === 'he' ? 'en' : 'he';
+            localStorage.setItem('lang', newLang);
+            applyLanguage(newLang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            applyLanguage(localStorage.getItem('lang') || 'he');
+        });
+    </script>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="relative bg-gray-800 p-5 border-b border-gray-700 shadow-lg">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+            <div class="text-xl font-bold text-blue-400">
+                <span class="lang-he">היסטוריה באבן</span>
+                <span class="lang-en">History in Stone</span>
+            </div>
+            <div class="flex flex-wrap gap-4 text-sm md:text-base">
+                <a href="../index.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">ראשי</span><span class="lang-en">Home</span>
+                </a>
+                <a href="../about.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">אודות</span><span class="lang-en">About</span>
+                </a>
+                <a href="./capitol.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">הקפיטול</span><span class="lang-en">Capitol</span>
+                </a>
+                <a href="./westminster.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">וסטמינסטר</span><span class="lang-en">Westminster</span>
+                </a>
+                <a href="./reichstag.html" class="text-blue-400 font-bold border-b-2 border-blue-400 pb-1">
+                    <span class="lang-he">הרייכסטאג</span><span class="lang-en">Reichstag</span>
+                </a>
+                <a href="./brazil_congress.html" class="hover:text-blue-300 transition-colors">
+                    <span class="lang-he">קונגרס ברזיל</span><span class="lang-en">Brazil Congress</span>
+                </a>
+            </div>
+            <button onclick="toggleLanguage()" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition-colors font-medium">
+                <span class="lang-he">English</span>
+                <span class="lang-en">עברית</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-4xl mx-auto p-6 md:p-10 w-full space-y-12">
+        <header class="border-b border-gray-700 pb-6">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">
+                <span class="lang-he">בניין הרייכסטאג (Reichstag building)</span>
+                <span class="lang-en">The Reichstag Building</span>
+            </h1>
+            <p class="text-xl text-blue-400 font-semibold">
+                <span class="lang-he">מבנה נושא צלקות היסטוריות המהווה סמל לגרמניה המאוחדת והשקופה.</span>
+                <span class="lang-en">A structure bearing historical scars, serving as a symbol of a unified and transparent Germany.</span>
+            </p>
+        </header>
+
+        <!-- Core Details -->
+        <section class="bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg border border-gray-700">
+            <ul class="space-y-4 text-lg">
+                <li class="flex flex-col md:flex-row gap-2">
+                    <strong class="text-blue-300 w-48 shrink-0">
+                        <span class="lang-he">אדריכלים מרכזיים:</span>
+                        <span class="lang-en">Main Architects:</span>
+                    </strong>
+                    <span class="text-gray-300">
+                        <span class="lang-he">פאול וולוט (Paul Wallot) בתכנון המקורי. סר נורמן פוסטר (Norman Foster) בשיפוץ ובניית כיפת הזכוכית המודרנית.</span>
+                        <span class="lang-en">Paul Wallot in the original design. Sir Norman Foster in the renovation and construction of the modern glass dome.</span>
+                    </span>
+                </li>
+                <li class="flex flex-col md:flex-row gap-2">
+                    <strong class="text-blue-300 w-48 shrink-0">
+                        <span class="lang-he">שנות הבנייה:</span>
+                        <span class="lang-en">Years of Construction:</span>
+                    </strong>
+                    <span class="text-gray-300">
+                        <span class="lang-he">המבנה המקורי נבנה בין השנים 1884–1894. השיפוץ המאסיבי (והכיפה) הושלם ב-1999 לאחר איחוד גרמניה.</span>
+                        <span class="lang-en">The original structure was built between 1884–1894. The massive renovation (and dome) was completed in 1999 after German reunification.</span>
+                    </span>
+                </li>
+                <li class="flex flex-col md:flex-row gap-2">
+                    <strong class="text-blue-300 w-48 shrink-0">
+                        <span class="lang-he">סיבת הבנייה:</span>
+                        <span class="lang-en">Reason for Construction:</span>
+                    </strong>
+                    <span class="text-gray-300">
+                        <span class="lang-he">במקור נבנה לאכלס את ה"דיאט" (האספה הלאומית) של הקיסרות הגרמנית החדשה שאוחדה ב-1871. לאחר המלחמה הקרה והאיחוד מחדש ב-1990, שופץ כדי לשמש כמשכן הבונדסטאג (הפרלמנט הגרמני המודרני).</span>
+                        <span class="lang-en">Originally built to house the "Diet" (national assembly) of the newly unified German Empire in 1871. After the Cold War and reunification in 1990, it was renovated to serve as the seat of the Bundestag (the modern German parliament).</span>
+                    </span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Etymology -->
+        <section class="space-y-4">
+            <h2 class="text-3xl font-bold text-white border-r-4 border-blue-500 pr-4 lang-he">אטימולוגיה ומקור השם</h2>
+            <h2 class="text-3xl font-bold text-white border-l-4 border-blue-500 pl-4 lang-en">Etymology and Meaning</h2>
+            
+            <div class="bg-gray-800 p-6 rounded-2xl border border-gray-700 text-gray-300 text-lg leading-relaxed">
+                <p class="mb-4">
+                    <span class="lang-he">המילה "רייכסטאג" מורכבת משתי מילים גרמניות בעלות מטען היסטורי כבד, המשקפות את המושגים של סמכות, שטח, וכינוס פוליטי. להלן הפירוק המלא:</span>
+                    <span class="lang-en">The word "Reichstag" is composed of two German words with heavy historical weight, reflecting the concepts of authority, territory, and political assembly. Here is the full breakdown:</span>
+                </p>
+                
+                <ul class="space-y-6">
+                    <li class="bg-gray-700/50 p-4 rounded-xl">
+                        <strong class="text-xl text-blue-300 block mb-2">
+                            <span class="lang-he">1. רייך (Reich):</span>
+                            <span class="lang-en">1. Reich:</span>
+                        </strong>
+                        <span class="lang-he">מילה בגרמנית שמשמעותה "ממלכה", "אימפריה" או "תחום ריבונות". המקור הוא פרוטו-גרמאני (rīkją) שמשמעותו כוח או שלטון. המונח שימש לתאר את האימפריה הרומית הקדושה (הרייך הראשון), האימפריה הגרמנית (הרייך השני, שעבורה נבנה הבניין), ומאוחר יותר נוכס על ידי גרמניה הנאצית (הרייך השלישי).</span>
+                        <span class="lang-en">A German word meaning "realm", "empire", or "sovereign territory". The root is Proto-Germanic (rīkją) meaning power or rule. The term was used to describe the Holy Roman Empire (First Reich), the German Empire (Second Reich, for which the building was built), and was later appropriated by Nazi Germany (Third Reich).</span>
+                    </li>
+                    
+                    <li class="bg-gray-700/50 p-4 rounded-xl">
+                        <strong class="text-xl text-blue-300 block mb-2">
+                            <span class="lang-he">2. טאג (Tag):</span>
+                            <span class="lang-en">2. Tag:</span>
+                        </strong>
+                        <span class="lang-he">המשמעות המילולית של Tag בגרמנית היא "יום". אולם, בהקשר פוליטי היסטורי, המילה מתייחסת ל"יום התכנסות" או לישיבה. בימי הביניים, נסיכים ושליטים היו קובעים "יום" שבו כולם מתאספים לדון בענייני הממלכה. עם הזמן, המילה "יום" הפכה למילה נרדפת ל"אספה" או ל"פרלמנט" (Diet באנגלית). </span>
+                        <span class="lang-en">The literal meaning of Tag in German is "day". However, in a historical political context, the word refers to a "day of meeting" or a session. In the Middle Ages, princes and rulers would designate a "day" when everyone gathered to discuss matters of the realm. Over time, the word "day" became synonymous with "assembly" or "Diet".</span>
+                    </li>
+                     <li class="bg-gray-700/50 p-4 rounded-xl">
+                        <strong class="text-xl text-blue-300 block mb-2">
+                            <span class="lang-he">הערה חשובה:</span>
+                            <span class="lang-en">Important Note:</span>
+                        </strong>
+                        <span class="lang-he">כיום, הפרלמנט הגרמני נקרא <strong>בונדסטאג</strong> (Bundestag - אסיפת הברית/הפדרציה). השם "רייכסטאג" מתייחס כיום <strong>אך ורק לבניין עצמו</strong> מטעמים היסטוריים, ולא לגוף הפוליטי היושב בתוכו.</span>
+                        <span class="lang-en">Today, the German parliament is called the <strong>Bundestag</strong> (Federal Assembly/Diet). The name "Reichstag" currently refers <strong>strictly to the building itself</strong> for historical reasons, and not to the political body sitting inside it.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Historical Background -->
+        <section class="space-y-4">
+            <h2 class="text-3xl font-bold text-white border-r-4 border-blue-500 pr-4 lang-he">רקע היסטורי ואדריכלי מקיף</h2>
+            <h2 class="text-3xl font-bold text-white border-l-4 border-blue-500 pl-4 lang-en">Comprehensive Historical & Architectural Background</h2>
+            
+            <div class="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-6">
+                <div class="lang-he">
+                    <p>בניין הרייכסטאג בברלין הוא ככל הנראה מבנה השלטון שחווה את התהפוכות ההיסטוריות הקיצוניות ביותר בעת המודרנית. הוא הוקם בסוף המאה ה-19, לאחר איחוד גרמניה על ידי אוטו פון ביסמרק (1871). האדריכל פאול וולוט עיצב מבנה כבד ומרשים בסגנון ניאו-רנסאנס עם השפעות ניאו-בארוקיות, שנועד להעביר מסר של עוצמה ויציבות של האימפריה הגרמנית החדשה. ב-1916 נוספה לחזית הכתובת המפורסמת "Dem Deutschen Volke" (לעם הגרמני), יציקה שנעשתה מתותחי שלל צרפתיים ממלחמת צרפת-פרוסיה.</p>
+                    
+                    <p>הבניין היה עד לנפילת האימפריה לאחר מלחמת העולם הראשונה ולהכרזת רפובליקת ויימאר (1918) ממרפסותיו. אך האירוע הדרמטי ביותר התרחש ב-27 בפברואר 1933 – "שריפת הרייכסטאג". הבניין עלה באש בנסיבות שנויות במחלוקת עד היום, אירוע שהיטלר והמפלגה הנאצית ניצלו באופן מיידי כדי להעביר את "צו שריפת הרייכסטאג", ששלל את זכויות האזרח הבסיסיות והיווה צעד מכריע בביסוס הדיקטטורה הנאצית. לאורך שלטון הנאצים, הבניין לא שימש לפרלמנט, והאסיפות התקיימו בבניין אופרת קרול הסמוך.</p>
+
+                    <p>במהלך הקרב על ברלין בסוף מלחמת העולם השנייה (1945), הרייכסטאג הפך ליעד כיבוש מרכזי עבור הצבא האדום הסובייטי, שכן הוא נתפס כסמל הפיזי של גרמניה הנאצית. תמונת הנפת הדגל הסובייטי על גג הרייכסטאג ההרוס הפכה לאחד מדימויי הניצחון האייקוניים של המלחמה. לאחר המלחמה, הבניין עמד נטוש והרוס, סמוך לחומה שחילקה את ברלין במהלך המלחמה הקרה, בשטח מערב ברלין.</p>
+
+                    <p>עם איחוד גרמניה מחדש (1990), הוחלט כי הממשלה תשוב ממעונה בבון לברלין, וכי הרייכסטאג ישמש שוב כבית הפרלמנט. נערכה תחרות אדריכלים שבה זכה סר נורמן פוסטר. הגישה של פוסטר הייתה מהפכנית: במקום למחוק את ההיסטוריה האפלה, הוא החליט לשמר אותה. פוסטר הותיר קירות עם גרפיטי וכתובות שחרתו חיילים סובייטים ב-1945. יתר על כן, הוא הסיר את הגג המיושן ובנה כיפת זכוכית שקופה ועצומה מעל אולם המליאה. כיפה זו מאפשרת לאזרחים לטפס ולהביט מלמעלה מטה על הפוליטיקאים שלהם עובדים. העיצוב החדש מסמל דמוקרטיה שקופה, אחריות ציבורית, ואקולוגיה (הכיפה מנתבת אור טבעי וחום לתוך הבניין). כיום, המבנה מגלם את הטרנספורמציה של גרמניה מדיקטטורה הרסנית למובילת הדמוקרטיה המודרנית באירופה.</p>
+                </div>
+                
+                <div class="lang-en">
+                    <p>The Reichstag building in Berlin is perhaps the government structure that has experienced the most extreme historical upheavals in modern times. It was erected at the end of the 19th century, following the unification of Germany by Otto von Bismarck (1871). Architect Paul Wallot designed a heavy and impressive structure in Neo-Renaissance style with Neo-Baroque influences, intended to convey a message of power and stability of the new German Empire. In 1916, the famous inscription "Dem Deutschen Volke" (To the German People) was added to the facade, cast from captured French cannons from the Franco-Prussian War.</p>
+                    
+                    <p>The building witnessed the fall of the Empire after World War I and the proclamation of the Weimar Republic (1918) from its balconies. But the most dramatic event occurred on February 27, 1933 - the "Reichstag Fire". The building was set ablaze under circumstances still debated today, an event that Hitler and the Nazi Party immediately exploited to pass the "Reichstag Fire Decree", which suspended basic civil rights and was a crucial step in establishing the Nazi dictatorship. Throughout the Nazi regime, the building was not used for parliament, and assemblies were held in the nearby Kroll Opera House.</p>
+
+                    <p>During the Battle of Berlin at the end of World War II (1945), the Reichstag became a prime target for the Soviet Red Army, as it was perceived as the physical symbol of Nazi Germany. The photograph of the raising of the Soviet flag on the roof of the ruined Reichstag became one of the most iconic victory images of the war. After the war, the building stood abandoned and ruined, near the wall that divided Berlin during the Cold War, in West Berlin territory.</p>
+
+                    <p>With the reunification of Germany (1990), it was decided that the government would return from its seat in Bonn to Berlin, and that the Reichstag would once again serve as the Parliament House. An architectural competition was held, won by Sir Norman Foster. Foster's approach was revolutionary: instead of erasing the dark history, he decided to preserve it. Foster left walls with graffiti and inscriptions carved by Soviet soldiers in 1945. Furthermore, he removed the outdated roof and built a massive, transparent glass dome over the plenary hall. This dome allows citizens to climb up and look down on their politicians at work. The new design symbolizes transparent democracy, public accountability, and ecology (the dome channels natural light and heat into the building). Today, the structure embodies Germany's transformation from a destructive dictatorship to a leader of modern democracy in Europe.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 p-6 border-t border-gray-700 mt-12">
+        <div class="max-w-7xl mx-auto text-center text-gray-400">
+            <p>
+                <span class="lang-he">האתר נבנה על ידי ג'מיני ורם.</span>
+                <span class="lang-en">This site was built by Gemini and Ram.</span>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
+
+```
