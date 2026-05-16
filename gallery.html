@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>גלריית החדר הסגלגל</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body{
+    background:#0f172a;
+    color:white;
+    font-family:Arial;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+    padding:40px;
+}
+
+.gallery img{
+    width:100%;
+    border-radius:20px;
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.gallery img:hover{
+    transform:scale(1.03);
+}
+
+.title{
+    text-align:center;
+    font-size:3rem;
+    margin-top:40px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1 class="title">גלריית החדר הסגלגל</h1>
+
+<div class="gallery">
+
+<img src="assets/images/presidential-oval-office-interior.jpg"
+alt="Oval Office">
+
+</div>
+
+</body>
+</html>
