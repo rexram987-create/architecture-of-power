@@ -96,7 +96,7 @@
         },
 
         'elysee_palace.html': {
-            image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Palais_de_l_Elysee_-_Paris.jpg',
+            image: '../assets/images/elysee-palace-exterior.jpg',
             imageAltHe: 'ארמון האליזה בפריז',
             imageAltEn: 'Élysée Palace in Paris',
             subtitleHe: 'בית הנשיא הצרפתי: ארמון אצולה שהפך למוקד נשיאותי.',
@@ -336,9 +336,12 @@
                 <div class="auto-image-credit px-6 md:px-8 py-3 border-b border-gray-700 bg-gray-900/70 text-xs md:text-sm text-gray-400">
                     <span class="lang-he">מקור התמונה: </span>
                     <span class="lang-en">Image source: </span>
-                    <a href="${data.image}" target="_blank" rel="noopener" class="text-blue-300 hover:text-blue-200 underline">Wikimedia Commons</a>
-                    <span class="lang-he"> — פרטי היוצר והרישיון מופיעים בעמוד הקובץ המקורי.</span>
-                    <span class="lang-en"> — author and license details appear on the original file page.</span>
+                    <a href="${data.image}" target="_blank" rel="noopener" class="text-blue-300 hover:text-blue-200 underline">
+                        <span class="lang-he">קישור לתמונה</span>
+                        <span class="lang-en">Image link</span>
+                    </a>
+                    <span class="lang-he"> — פרטי היוצר והרישיון מופיעים בעמוד הקובץ המקורי או במאגר האתר.</span>
+                    <span class="lang-en"> — author and license details appear on the original file page or in the site repository.</span>
                 </div>
 
                 <div class="p-6 md:p-8 space-y-8">
