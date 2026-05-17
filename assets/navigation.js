@@ -96,7 +96,7 @@
         },
 
         'elysee_palace.html': {
-            image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Elysee_Palace%2C_Paris_2007.jpg',
+            image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Palais_de_l_Elysee_-_Paris.jpg',
             imageAltHe: 'ארמון האליזה בפריז',
             imageAltEn: 'Élysée Palace in Paris',
             subtitleHe: 'בית הנשיא הצרפתי: ארמון אצולה שהפך למוקד נשיאותי.',
