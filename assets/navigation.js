@@ -68,7 +68,7 @@
         },
 
         'knesset.html': {
-            image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Knesset_Building%2C_Jerusalem.jpg',
+            image: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Knesset_building_%28South_side%29.jpg',
             imageAltHe: 'משכן הכנסת בירושלים',
             imageAltEn: 'Knesset building in Jerusalem',
             subtitleHe: 'בית המחוקקים של ישראל והבמה המרכזית של הדמוקרטיה הישראלית.',
