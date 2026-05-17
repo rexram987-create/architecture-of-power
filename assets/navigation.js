@@ -68,7 +68,7 @@
         },
 
         'knesset.html': {
-            image: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Knesset_building_%28South_side%29.jpg',
+            image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Knesset_building.jpg',
             imageAltHe: 'משכן הכנסת בירושלים',
             imageAltEn: 'Knesset building in Jerusalem',
             subtitleHe: 'בית המחוקקים של ישראל והבמה המרכזית של הדמוקרטיה הישראלית.',
@@ -82,7 +82,7 @@
         },
 
         'kremlin.html': {
-            image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Moscow_Kremlin_from_Bolshoy_Kamenny_Bridge.jpg',
+            image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Moscow_Kremlin_and_Bolshoy_Kamenny_Bridge_late_evening_01.JPG',
             imageAltHe: 'הקרמלין של מוסקבה',
             imageAltEn: 'Moscow Kremlin',
             subtitleHe: 'מצודה, ארמון ומרכז שלטון רוסי לאורך מאות שנים.',
@@ -96,7 +96,7 @@
         },
 
         'elysee_palace.html': {
-            image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Palais_de_l_Elysee.jpg',
+            image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Elysee_Palace%2C_Paris_2007.jpg',
             imageAltHe: 'ארמון האליזה בפריז',
             imageAltEn: 'Élysée Palace in Paris',
             subtitleHe: 'בית הנשיא הצרפתי: ארמון אצולה שהפך למוקד נשיאותי.',
@@ -383,6 +383,7 @@
         injectStyles();
 
         const oldNav = document.querySelector('nav');
+
         if (oldNav) {
             oldNav.outerHTML = buildNav();
         }
